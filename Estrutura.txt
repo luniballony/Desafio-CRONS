@@ -1,0 +1,40 @@
+Objetivo:
+    Serviço gestão CRONS que expõe uma API para configuração
+
+Argumentos CRONS:
+    - url (uri?)
+        endereço que recebe notificação que CRON foi disparado
+    - httpMethod
+        método http usado para notificar
+    - body
+        conteúdo a enviar
+    - shedule
+        expressão a ser usada para definir freq. mensagem
+    - timeZone
+        timezone do CRON
+
+Funcionamento:
+    1. disparar CRON
+    2. CRON notifica serviço externo
+
+Funções:
+    - criar
+    - editar
+    - listar
+    - apagar
+
+Resultado:
+    mostrar utilizador mensagem com conteúdo de 'body' para consola ou ficheiro
+    ex.: 
+        2021_12_01 09:00:00 - VALOR_DO_BODY~
+
+Dados:
+    base de bados ou memória
+
+Extra: 
+    serviço CRON com suporte para cluster (permitir correr várias instâncias do serviço concorrente)
+
+
+"A API deve de suportar não só o criar, mas também editar, apagar e listar. Deverá ser criado um front-end
+ que comunique com essa API, onde este apresenta uma secção para agendamento das crons e
+ listagem/edição/remoção das mesmas."
