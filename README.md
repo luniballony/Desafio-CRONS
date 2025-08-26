@@ -15,3 +15,6 @@ Dependências a instalar:
 
     # timezones, validação cron
     npm install luxon cron-parser
+
+    # express
+    npm install express
