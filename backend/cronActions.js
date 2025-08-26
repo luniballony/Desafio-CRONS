@@ -26,4 +26,17 @@ export function CronJob (schedule, body) {
   } 
 }
 
+
+// função para eliminar cron
+export function DeleteCron(uri) {
+  const index = data.findIndex(cron => cron.uri === uri);
+  if (index !== -1) {
+    data.splice(index, 1);
+    console.log(`Cron with URI: /${uri} has been deleted.`);
+  } else {
+    console.log(`No cron found with URI: /${uri}`);
+  }
+}
+
+DeleteCron("a");
 ListCrons();  
