@@ -4,9 +4,7 @@ import express from "express";
 const app = express();
 const port = 8080;
 
-const temporaryMessage = "This message shows every 2 seconds";
 const frequency = "*/2 * * * * *";
-
 
 // função para mostrar a hora atual
 function Time() {
@@ -23,17 +21,28 @@ function Day() {
 
 // função para definir o cron
 function CronJob (schedule, body) {
-  cron.schedule(schedule, () => {        
-    console.log(`${Day()} ${Time()} - ${body}`);
-  });
-}
+  try {
+    if (!cron.validate(schedule)) {
+      throw new Error(`Invalid cron expression: ${schedule}`);
+    }
 
+    cron.schedule(schedule, () => {        
+      console.log(`${Day()} ${Time()} - ${body}`);
+    });
+
+  }
+  catch (error) {
+    console.error("Error scheduling cron job:", error.message);
+  } 
+}
 
 // função para criação individual endpoints
 function IndividualEndpoint (uri, httpMethod, schedule, body) {
   app[httpMethod.toLowerCase()](`/${uri}`, (req, res) => {
     res.status(200).send
-    ("CRON created! Check your console"); 
+    (`CRON created! Check your console.\n 
+      Body: ${body}
+    `); 
     
     CronJob(schedule, body);
   });
@@ -49,7 +58,10 @@ function StartServer(uri) {
 
 
   IndividualEndpoint("itemm", 'GET', frequency, "This message shows every 2 seconds");
-  IndividualEndpoint("a", 'GET', frequency, "hi there!!!");
+  IndividualEndpoint("a", 'GET', "*/3 * * * * *", "This message shows every 3 seconds");
+
+  // teste de erro (schedule inválido)
+  IndividualEndpoint("b", 'GET', "*/ * * *", "This message shows every second");
 }
 
 StartServer(8080);
