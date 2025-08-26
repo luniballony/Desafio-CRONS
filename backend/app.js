@@ -2,6 +2,7 @@ import cron from "node-cron";
 // criação server express
 import express from "express";
 import { data } from "./data.js";
+import { ListCrons, CronJob } from "./cronActions.js";
 
 const app = express();
 const port = 8080;
@@ -18,23 +19,6 @@ function Day() {
   return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
 }
 
-
-// função para definir o cron
-function CronJob (schedule, body) {
-  try {
-    if (!cron.validate(schedule)) {
-      throw new Error(`Invalid cron expression: ${schedule}`);
-    }
-
-    cron.schedule(schedule, () => {        
-      console.log(`${Day()} ${Time()} - ${body}`);
-    });
-
-  }
-  catch (error) {
-    console.error("Error scheduling cron job:", error.message);
-  } 
-}
 
 // função para criação individual endpoints
 function IndividualEndpoint (uri, httpMethod, schedule, body) {
@@ -62,7 +46,7 @@ function StartServer(uri) {
   });
 }
 
-StartServer(8080);
+//StartServer(8080);
 
 
 

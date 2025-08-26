@@ -22,4 +22,5 @@ Dependências a instalar:
 
 ==========
 - assume que body é uma string
+- considera-se uri como um id de cada cron
 - cron so dispara se página for ativada (tem se de visitar o endpoint)
