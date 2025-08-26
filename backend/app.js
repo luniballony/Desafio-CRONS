@@ -3,7 +3,7 @@
 import cron from "node-cron"; // criação server express
 import express from "express";
 import data from './data.json' with { type: 'json' }; 
-import { ListCrons, CronJob } from "./cronActions.js";
+import { ListCrons, CreatCron } from "./cronActions.js";
 
 const app = express();
 const port = 8080;
@@ -29,7 +29,7 @@ function IndividualEndpoint (uri, httpMethod, schedule, body) {
       Body: ${body}
     `); 
     
-    CronJob(schedule, body);
+    CreateCron(schedule, body);
   });
 }
 

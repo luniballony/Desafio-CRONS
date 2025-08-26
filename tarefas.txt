@@ -2,10 +2,12 @@
 ======== BACKEND ==========
 - função data (FEITO)
 - tratamento/detetação de erros
-- função listar
+    - adicionar verificação de metodo de http
+- função listar (FEITO)
 - função criar
-- função apagar
-- função editar
+    - adicionar novas criações ao ficheiro data.json
+- função apagar (FEITO)
+- função editar (FEITO)
 
 
 ======== FRONTEND ==========

@@ -22,5 +22,11 @@
     "httpMethod": "POST",
     "schedule": "*/15 * * * * *",
     "body": "This is a veryyyyyyyyyy long message that shows every 15 seconds"
+  },
+  {
+    "uri": "cron1",
+    "httpMethod": "GET",
+    "schedule": "*/2 * * * * *",
+    "body": "Edited cron 1 executed!"
   }
 ]
