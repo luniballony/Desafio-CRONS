@@ -1,9 +1,9 @@
 // ficheiro para listar, criar, apagar e editar cron jobs
 import cron from "node-cron";
-// permite manipular ficheiros
-import fs from 'fs';
-import { data } from "./data.js";
+import fs from 'fs'; // permite manipular ficheiros
+import data from './data.json' with { type: 'json' }; 
 import { Time, Day } from "./app.js";
+
 
 
 // função para listar todos os crons
@@ -12,6 +12,7 @@ export function ListCrons() {
     console.log(`URI: /${cron.uri} | Method: ${cron.httpMethod} | Schedule: ${cron.schedule} | Body: ${cron.body}`);
   });
 }
+
 
 // função para definir o cron
 export function CronJob (schedule, body) {
@@ -36,13 +37,10 @@ export function DeleteCron(uri) {
   const index = data.findIndex(cron => cron.uri === uri);
   if (index !== -1) {
     data.splice(index, 1);
-    fs.writeFileSync('./data.js', `export const data = ${JSON.stringify(data, null, 2)};`);
+    fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
     console.log(`Cron with URI: /${uri} has been deleted.`);
   } else {
     console.log(`No cron found with URI: /${uri}`);
   } 
 }
 
-
-DeleteCron("a"); // exemplo de delete
-ListCrons();  

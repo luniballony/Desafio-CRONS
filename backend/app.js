@@ -1,7 +1,8 @@
-import cron from "node-cron";
-// criação server express
+// ficheiro principal do backend 
+
+import cron from "node-cron"; // criação server express
 import express from "express";
-import { data } from "./data.js";
+import data from './data.json' with { type: 'json' }; 
 import { ListCrons, CronJob } from "./cronActions.js";
 
 const app = express();
