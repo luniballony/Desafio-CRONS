@@ -1,10 +1,10 @@
 import cron from "node-cron";
 // criação server express
 import express from "express";
+import { data } from "./data.js";
+
 const app = express();
 const port = 8080;
-
-const frequency = "*/2 * * * * *";
 
 // função para mostrar a hora atual
 function Time() {
@@ -56,12 +56,10 @@ function StartServer(uri) {
   }
   );
 
-
-  IndividualEndpoint("itemm", 'GET', frequency, "This message shows every 2 seconds");
-  IndividualEndpoint("a", 'GET', "*/3 * * * * *", "This message shows every 3 seconds");
-
-  // teste de erro (schedule inválido)
-  IndividualEndpoint("b", 'GET', "*/ * * *", "This message shows every second");
+  // cria todos os endpoints presentes em data.js
+  data.forEach(cron => {
+    IndividualEndpoint(cron.uri, cron.httpMethod, cron.schedule, cron.body);
+  });
 }
 
 StartServer(8080);

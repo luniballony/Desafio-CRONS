@@ -1,2 +1,11 @@
 ======== A FAZER ==========
-- função data
+======== BACKEND ==========
+- função data (FEITO)
+- tratamento/detetação de erros
+- função listar
+- função criar
+- função apagar
+- função editar
+
+
+======== FRONTEND ==========

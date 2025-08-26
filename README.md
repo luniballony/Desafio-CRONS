@@ -18,3 +18,8 @@ Dependências a instalar:
 
     # express
     npm install express
+
+
+==========
+- assume que body é uma string
+- cron so dispara se página for ativada (tem se de visitar o endpoint)
