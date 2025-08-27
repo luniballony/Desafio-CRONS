@@ -3,11 +3,13 @@
 - função data (FEITO)
 - tratamento/detetação de erros
     - adicionar verificação de metodo de http
+    - impedir que mesmo uri seja usado em Individualendpoint
 - função listar (FEITO)
 - função criar
     - adicionar novas criações ao ficheiro data.json
 - função apagar (FEITO)
 - função editar (FEITO)
+- adicionar timezones!!!
 
 
 ======== FRONTEND ==========

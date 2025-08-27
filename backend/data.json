@@ -28,5 +28,35 @@
     "httpMethod": "GET",
     "schedule": "*/2 * * * * *",
     "body": "Edited cron 1 executed!"
+  },
+  {
+    "uri": "cron1",
+    "httpMethod": "GET",
+    "schedule": "*/2 * * * * *",
+    "body": "Edited cron 1 executed!"
+  },
+  {
+    "uri": "1",
+    "httpMethod": "GET",
+    "schedule": "*/1 * * * * *",
+    "body": "This is a temporary message."
+  },
+  {
+    "uri": "1",
+    "httpMethod": "GET",
+    "schedule": "*/1 * * * * *",
+    "body": "This is a temporary message."
+  },
+  {
+    "uri": "itemm",
+    "httpMethod": "GET",
+    "schedule": "*/2 * * * * *",
+    "body": "BLAAAAA This message shows every 2 seconds"
+  },
+  {
+    "uri": "itemm",
+    "httpMethod": "GET",
+    "schedule": "*/2 * * * * *",
+    "body": "BLAAAAA This message shows every 2 seconds"
   }
 ]
