@@ -5,6 +5,7 @@ import fs from 'fs'; // permite manipular ficheiros
 import express from "express";
 import data from './data.json' with { type: 'json' }; 
 import { ListCrons, CreateCron } from "./cronActions.js";
+import { create } from "domain";
 
 const app = express();
 
@@ -22,24 +23,16 @@ export function Day() {
 
 
 // função para criação individual endpoints
-function IndividualEndpoint (uri, httpMethod, schedule, body) {
-  const index = data.findIndex(cron => cron.uri === uri);
-  /*if (index !== -1 || !uri) {
-    console.log(`Thar uri is already in use or invalid: /${uri}`);
-    return;
-  } */
-
+export function EndpointCreator (uri, httpMethod, body, schedule) {
   app[httpMethod.toLowerCase()](`/${uri}`, (req, res) => {
     res.status(200).send
     (    
-      (`New Cron Created: URI: /${uri} Method: ${httpMethod} Schedule: ${schedule} Body: ${body}`)
+      (`Cron ativated with body: ${body}`)
     ); 
-    
-    // adiciona o novo cron a data.json
-    data.push({uri: uri, httpMethod: httpMethod, schedule: schedule, body: body });
-    fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
-
-    CreateCron(schedule, body);
+  
+    cron.schedule(schedule, () => {        
+      console.log(`${Day()} ${Time()} - ${body}`);
+    });
   });
 }
 
@@ -53,7 +46,7 @@ function StartServer(port) {
 
   // cria todos os endpoints presentes em data.js
   data.forEach(cron => {
-    IndividualEndpoint(cron.uri, cron.httpMethod, cron.schedule, cron.body);
+    EndpointCreator(cron.uri, cron.httpMethod, cron.body, cron.schedule);
   });
 }
 
