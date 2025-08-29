@@ -1,0 +1,1 @@
+// página para mostrar cron individual

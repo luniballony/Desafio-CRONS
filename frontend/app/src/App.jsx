@@ -5,6 +5,9 @@ import Create from './pages/Create';
 import Edit from './pages/Edit';
 import Delete from './pages/Delete';
 import NavBar from './components/NavBar';
+import EditCron from './pages/EditCron';
+import DeleteCron from './pages/DeleteCron';
+import ViewCron from './pages/ViewCron';
 
 function App() {
   
@@ -17,7 +20,10 @@ function App() {
           <Route path='/list' element={< List />} />
           <Route path='/create' element={< Create />} />
           <Route path='/edit' element={< Edit />} />
-          <Route path='/delete' element={< Delete />} />
+          <Route path='/edit/:uriId' element={< EditCron />} />
+          <Route path='/delete' element={< Delete />} />          
+          <Route path='/delete/:uriId' element={< DeleteCron />} />
+          <Route path='/view/:uriId' element={< ViewCron />} />
         </Routes>
      </main>
     </div>

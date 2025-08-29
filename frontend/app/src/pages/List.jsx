@@ -1,5 +1,6 @@
 // página para listar crons
 import React, { useEffect, useState} from "react";
+import { Link } from "react-router-dom";
 
 const List = () => {
   const [cron, setCron] = useState([]);
@@ -20,11 +21,15 @@ const List = () => {
 
   return (
     <div>
-      <h1>List of Crons</h1>
+      <h1>List of all existing Crons</h1>
       {
         cron.map((item) => (
           <div key={item.uri}>
             <p> uri: {item.uri} | http method: {item.httpMethod} | schedule: {item.schedule} | time zone: TBD | body: {item.body}</p>
+            <br></br>
+            <Link to={`/view/${item.uri}`}>View this Cron</Link>
+            <Link to={`/edit/${item.uri}`}>Edit this Cron</Link>
+            <Link to={`/delete/${item.uri}`}>Delete this Cron</Link>
           </div>))
       }
     </div>

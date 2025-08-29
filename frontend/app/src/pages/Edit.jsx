@@ -1,4 +1,4 @@
-// página para editar crons
+// página para listar crons e selecionar o que se pretende editar
 
 
 function Edit () {

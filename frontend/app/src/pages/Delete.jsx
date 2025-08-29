@@ -1,4 +1,4 @@
-// página para eliminar Crons
+// página para listar crons e selecionar o que se pretende eliminar
 
 function Delete () {
 

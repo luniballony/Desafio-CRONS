@@ -13,8 +13,10 @@
 
 
 ======== FRONTEND ==========
-- criar routes
-    - página listar
-    - página criar
-    - página editar
-    - página elimninar
+- criar routes (FEITO)
+- criar navBar (FEITO)
+- página listar (FEITO)
+- página criar
+- página editar
+- página elimninar
+- criar css
