@@ -1,6 +1,7 @@
+// página para listar crons
 import React, { useEffect, useState} from "react";
 
-const App = () => {
+const List = () => {
   const [cron, setCron] = useState([]);
 
   const getList = () => {
@@ -8,6 +9,7 @@ const App = () => {
     .then(res => res.json()) // recebe dados do servidor e transforma-os em json para poder ser usada com js
     .then(newCron => {
       setCron(newCron);
+      console.log(newCron);
     })
     .catch(err => console.error("Error fetching data:", err));
   }
@@ -29,4 +31,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default List;
