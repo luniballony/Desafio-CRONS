@@ -6,10 +6,15 @@
     - impedir que mesmo uri seja usado em Individualendpoint
 - função listar (FEITO)
 - função criar
-    - adicionar novas criações ao ficheiro data.json
+    - adicionar novas criações ao ficheiro data.json (FEITO)
 - função apagar (FEITO)
 - função editar (FEITO)
 - adicionar timezones!!!
 
 
 ======== FRONTEND ==========
+- criar routes
+    - página listar
+    - página criar
+    - página editar
+    - página elimninar

@@ -2,11 +2,14 @@
 Desafio FullStack CRONS para Glartek
 
 ========
-to run:
+to run (backend):
     node app
 
+to run (frontend):
+    npm start
+
 ========
-Dependências a instalar:
+Dependências a instalar (backend):
     # agendamento (cron jobs)
     npm install node-cron
 
@@ -18,6 +21,11 @@ Dependências a instalar:
 
     # express
     npm install express
+
+
+Depedências a instalar (frontEnd):
+    # react router
+    npm install react-router-dom
 
 
 ==========
