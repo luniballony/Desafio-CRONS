@@ -36,6 +36,11 @@ export function EndpointCreator (uri, httpMethod, body, schedule) {
   });
 }
 
+app.get('/list', (req, res) => {
+  res.status(200).json(ListCrons());  
+});
+
+
 
 // função para iniciar o server
 function StartServer(port) {

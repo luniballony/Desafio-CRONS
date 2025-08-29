@@ -7,10 +7,14 @@ import { Time, Day, EndpointCreator } from "./app.js";
 
 // função para listar todos os crons
 export function ListCrons() {
-  data.forEach(cron => {
-    console.log(`URI: /${cron.uri} | Method: ${cron.httpMethod} | Schedule: ${cron.schedule} | Body: ${cron.body}`);
-  });
+  return data.map(cron => ({
+    uri: cron.uri,
+    httpMethod: cron.httpMethod,
+    schedule: cron.schedule,
+    body: cron.body
+  }));
 }
+
 
 
 // função para criar o cron
