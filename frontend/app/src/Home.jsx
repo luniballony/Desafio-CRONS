@@ -1,6 +1,6 @@
 // página inicial 
 
-const Home = () => {
+function Home () {
     return (
         <div>
             <p>This is the home page</p>
