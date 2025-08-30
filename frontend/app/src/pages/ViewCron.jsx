@@ -14,7 +14,6 @@ function ViewCron () {
     <div>
       {(cron ? (
         <div >
-          <p>You are looking at this cron:</p>
           <p>{`URI: ${cron.uri}`}</p>
           <p>{`HTTP METHOD: ${cron.httpMethod}`}</p>
           <p>{`SCHEDULE: ${cron.schedule}`}</p>
