@@ -1,16 +1,28 @@
 // página para ver cron individualmente
-import React, { useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
+import {GetSpecificCron} from '../hooks/FetchData'
 
 
 function ViewCron () {
-    const {uriId}  = useParams();
+    
+  const {uriId}  = useParams();
 
-    return (
-        <div>
-            <p>{uriId}</p>
-        </div>
-        );
+  // gets data  
+  const cron = GetSpecificCron(uriId)
+  
+  return (
+    <div>
+      {(cron ? (
+        <div >
+          <p>You are looking at this cron:</p>
+          <p>{`URI: ${cron.uri}`}</p>
+          <p>{`HTTP METHOD: ${cron.httpMethod}`}</p>
+          <p>{`SCHEDULE: ${cron.schedule}`}</p>
+          <p>{`BODY: ${cron.body}`}</p>
+        </div>) :
+        (<p>cant load</p>)
+      )}
+    </div>)
 }
 
 export default ViewCron

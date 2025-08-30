@@ -16,31 +16,6 @@ export function ListCrons() {
 }
 
 
-
-// função para criar o cron
-/*
-export function CreateCron (schedule, body) {
-  try {
-    if (!cron.validate(schedule) || !schedule) {
-      console.log(`Invalid cron expression: ${schedule}`);
-      return;
-    }
-    if (!body) {
-      console.log("Body cannot be empty.");
-      return;
-    }
-
-    cron.schedule(schedule, () => {        
-      console.log(`${Day()} ${Time()} - ${body}`);
-    });
-
-  }
-  catch (error) {
-    console.error("Error scheduling cron job:", error.message);
-  } 
-}
-*/
-
 export function CreateCron (uri, httpMethod, body, schedule) {
   try {
     const index = data.findIndex(cron => cron.uri === uri);

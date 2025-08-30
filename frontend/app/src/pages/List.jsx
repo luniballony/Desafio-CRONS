@@ -1,23 +1,11 @@
 // página para listar crons
-import React, { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
+import {useCronData} from '../hooks/FetchData'
 
 const List = () => {
-  const [cron, setCron] = useState([]);
+  const { cron, loading } = useCronData();
 
-  const getList = () => {
-  fetch('/list')
-    .then(res => res.json()) // recebe dados do servidor e transforma-os em json para poder ser usada com js
-    .then(newCron => {
-      setCron(newCron);
-      console.log(newCron);
-    })
-    .catch(err => console.error("Error fetching data:", err));
-  }
-
-  useEffect(() => { 
-    getList();
-  }, []); // importante estar vazio para só correr quando a página é carregada
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div>
