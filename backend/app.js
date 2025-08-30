@@ -4,41 +4,20 @@ import cron from "node-cron"; // criação server express
 import express from "express";
 import data from './data.json' with { type: 'json' }; 
 import { ListCrons, DeleteCron, CreateCron } from "./cronActions.js";
+import { Time, Day, cronActivator } from "./cronActions.js";
 
 
 
 const app = express();
 
-// função para mostrar a hora atual
-export function Time() {
-  const now = new Date();
-  return `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
-}
-
-// função para mostrar dia atual
-export function Day() {
-  const now = new Date();
-  return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-}
-
-
-// função para criação individual endpoints
-
-export function EndpointCreator (uri, httpMethod, body, schedule) {
-  app[httpMethod.toLowerCase()](`/${uri}`, (req, res) => {
-    res.status(200).send
-    (    
-      (`Cron ativated with body: ${body}`)
-    ); 
-  
-    cron.schedule(schedule, () => {        
-      console.log(`${Day()} ${Time()} - ${body}`);
-    });
-  });
-}
-
-
 app.use(express.json()); 
+
+// endpoint para ativar cron
+app.post("/cron/:uri", (req, res) => {
+  const result = cronActivator(req.params.uri);
+  res.json(result);
+});
+
 
 // endpoint para criar cron jobs
 app.post('/create-cron', (req, res) => {
@@ -78,11 +57,6 @@ function StartServer(port) {
     console.log(`app on http://localhost:${port}`);
   }
   );
-
-  // cria todos os endpoints presentes em data.js
-  data.forEach(cron => {
-    EndpointCreator(cron.uri, cron.httpMethod, cron.body, cron.schedule);
-  });
 }
 
 StartServer(8080);

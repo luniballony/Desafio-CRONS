@@ -2,18 +2,45 @@
 import cron from "node-cron";
 import fs from 'fs'; // permite manipular ficheiros
 import data from './data.json' with { type: 'json' }; 
-import { Time, Day, EndpointCreator } from "./app.js";
 
 
-// função para listar todos os crons
-export function ListCrons() {
-  return data.map(cron => ({
-    uri: cron.uri,
-    httpMethod: cron.httpMethod,
-    schedule: cron.schedule,
-    body: cron.body
-  }));
+
+// função para mostrar a hora atual
+export function Time() {
+  const now = new Date();
+  return `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
 }
+
+// função para mostrar dia atual
+export function Day() {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+}
+
+
+// função para ativar crons
+export function cronActivator(uri) {
+  const cronData = data.find(c => c.uri === uri);
+
+  if (!cronData) {
+    console.log(`No cron found with URI: /${uri}`);
+    return { success: false, message: `No cron found with URI: /${uri}.` };
+  }
+
+  // ativa o cron com os dados
+  cron.schedule(cronData.schedule, () => {
+    const timestamp = `${Day()} ${Time()}`;
+    console.log(`${timestamp} - ${cronData.body}`);
+  }, {
+    timezone: cronData.timeZone
+  });
+
+  const msg = `Cron activated with body: ${cronData.body}`;
+  console.log(msg);
+
+  return { success: true, message: msg };
+}
+
 
 // função para criar crons
 export function CreateCron (uri, httpMethod, body, schedule) {
@@ -45,6 +72,17 @@ export function CreateCron (uri, httpMethod, body, schedule) {
     console.error("Error scheduling cron job:", error.message);
     return { success: false, message: "Server error creating the cron." };
   } 
+}
+
+
+// função para listar todos os crons
+export function ListCrons() {
+  return data.map(cron => ({
+    uri: cron.uri,
+    httpMethod: cron.httpMethod,
+    schedule: cron.schedule,
+    body: cron.body
+  }));
 }
 
 

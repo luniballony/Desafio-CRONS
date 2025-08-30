@@ -9,6 +9,12 @@ function ViewCron () {
 
   // gets data  
   const cron = GetSpecificCron(uriId)
+
+  // ativa o cron
+  fetch(`/cron/${uriId}`, { method: "POST" })
+  .then(res => res.json())
+  .then(data => console.log(data.message));
+
   
   return (
     <div>
