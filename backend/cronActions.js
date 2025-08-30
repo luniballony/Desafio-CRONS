@@ -15,34 +15,35 @@ export function ListCrons() {
   }));
 }
 
-
+// função para criar crons
 export function CreateCron (uri, httpMethod, body, schedule) {
-  try {
-    const index = data.findIndex(cron => cron.uri === uri);
+  const index = data.findIndex(cron => cron.uri === uri);
     if (index !== -1 || !uri) {
       console.log(`Thar uri is already in use or invalid: /${uri}`);
-      return;
+      return { success: false, message: `That URI is already in use: /${uri}` };
     }
 
     if (!cron.validate(schedule) || !schedule) {
       console.log(`Invalid cron expression: ${schedule}`);
       return;
     }
-    if (!body) {
-      console.log("Body cannot be empty.");
-      return;
-    }
+    if (!uri || !httpMethod || !schedule || !body) {
+    const message = "All fields (uri, httpMethod, schedule, body) are required.";
+    console.log(message);
+    return { success: false, message: message };
+  }
 
+  try {
     // adiciona o novo cron a data.json
     data.push({uri: uri, httpMethod: httpMethod, schedule: schedule, body: body });
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
 
-    // cria o endpoint e o cron job
-    EndpointCreator(uri, httpMethod, body, schedule);
     console.log(`New cron created: URI: /${uri} | Method: ${httpMethod} | Schedule: ${schedule} | Body: ${body}`);
+    return { success: true, message: "Cron created successfully." };
   }
   catch (error) {
     console.error("Error scheduling cron job:", error.message);
+    return { success: false, message: "Server error creating the cron." };
   } 
 }
 

@@ -3,7 +3,7 @@
 import cron from "node-cron"; // criação server express
 import express from "express";
 import data from './data.json' with { type: 'json' }; 
-import { ListCrons, DeleteCron } from "./cronActions.js";
+import { ListCrons, DeleteCron, CreateCron } from "./cronActions.js";
 
 
 
@@ -23,6 +23,7 @@ export function Day() {
 
 
 // função para criação individual endpoints
+
 export function EndpointCreator (uri, httpMethod, body, schedule) {
   app[httpMethod.toLowerCase()](`/${uri}`, (req, res) => {
     res.status(200).send
@@ -35,6 +36,22 @@ export function EndpointCreator (uri, httpMethod, body, schedule) {
     });
   });
 }
+
+
+app.use(express.json()); 
+
+// endpoint para criar cron jobs
+app.post('/create-cron', (req, res) => {
+  const { uri, httpMethod, body, schedule } = req.body;
+
+  const result = CreateCron(uri, httpMethod, body, schedule);
+
+  if (result.success) {
+    res.status(201).json(result);
+  } else {
+    res.status(400).json(result);
+  }
+});
 
 // endpoint para listar
 app.get('/list', (req, res) => {
