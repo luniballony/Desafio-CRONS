@@ -1,11 +1,11 @@
 // ficheiro principal do backend 
 
 import cron from "node-cron"; // criação server express
-import fs from 'fs'; // permite manipular ficheiros
 import express from "express";
 import data from './data.json' with { type: 'json' }; 
-import { ListCrons, CreateCron } from "./cronActions.js";
-import { create } from "domain";
+import { ListCrons, DeleteCron } from "./cronActions.js";
+
+
 
 const app = express();
 
@@ -36,10 +36,23 @@ export function EndpointCreator (uri, httpMethod, body, schedule) {
   });
 }
 
+// endpoint para listar
 app.get('/list', (req, res) => {
   res.status(200).json(ListCrons());  
 });
 
+
+// endpoint para eliminar
+app.delete('/delete/:uriId', (req, res) => {
+  const { uriId } = req.params;
+  
+  const result = DeleteCron(uriId);
+  if (result.success) {
+    res.status(200).json(result);
+  } else {
+    res.status(404).json(result);
+  }
+});
 
 
 // função para iniciar o server

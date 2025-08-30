@@ -5,7 +5,7 @@ function Delete () {
 
   return (
     <div>
-			<h1>{`Select which CRON to edit:`}</h1>
+			<h1>{`Select which CRON to delete:`}</h1>
 			<List />
 		</div>
   )

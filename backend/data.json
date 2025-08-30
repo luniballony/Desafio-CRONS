@@ -1,17 +1,5 @@
 [
   {
-    "uri": "itemm",
-    "httpMethod": "GET",
-    "schedule": "*/2 * * * * *",
-    "body": "BLAAAAA This message shows every 2 seconds"
-  },
-  {
-    "uri": "bla",
-    "httpMethod": "GET",
-    "schedule": "*/5 * * * * *",
-    "body": "This message shows every 5 seconds"
-  },
-  {
     "uri": "a",
     "httpMethod": "POST",
     "schedule": "*/1 * * * * *",

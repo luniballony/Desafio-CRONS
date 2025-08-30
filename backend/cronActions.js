@@ -54,10 +54,13 @@ export function DeleteCron(uri) {
     data.splice(index, 1);
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
     console.log(`Cron with URI: /${uri} has been deleted.`);
+     return { success: true, message: `Cron with URI: /${uri} has been deleted.` };
   } else {
     console.log(`No cron found with URI: /${uri}`);
+    return { success: false, message: `No cron found with URI: /${uri}.` };
   } 
 }
+
 
 
 // função para editar cron
