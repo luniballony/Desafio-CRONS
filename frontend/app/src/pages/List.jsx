@@ -13,7 +13,7 @@ const List = () => {
       {
         cron.map((item) => (
           <div key={item.uri}>
-            <p> uri: {item.uri} | http method: {item.httpMethod} | schedule: {item.schedule} | time zone: TBD | body: {item.body}</p>
+            <p> uri: {item.uri} | http method: {item.httpMethod} | schedule: {item.schedule} | time zone: {item.timeZone}  | body: {item.body}</p>
             <br></br>
             <Link to={`/view/${item.uri}`}>View this Cron</Link>
             <Link to={`/edit/${item.uri}`}>Edit this Cron</Link>

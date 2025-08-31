@@ -2,61 +2,78 @@
   {
     "uri": "a",
     "httpMethod": "get",
-    "schedule": " */1 * * * * *",
-    "body": "GET TEST"
+    "schedule": "*/1 * * * * *",
+    "body": "trying ",
+    "timeZone": "America/New_York"
   },
   {
     "uri": "cron1",
     "httpMethod": "get",
     "schedule": " */2 * * * * *",
-    "body": "just trying something new"
+    "body": "just trying something new",
+    "timeZone": "Europe/Lisbon"
   },
   {
     "uri": "1",
     "httpMethod": "GET",
     "schedule": "*/1 * * * * *",
-    "body": "This is a temporary message."
+    "body": "This is a temporary message.",
+    "timeZone": "Europe/Lisbon"
   },
   {
     "uri": "testget",
     "httpMethod": "get",
     "schedule": "* * * * *",
-    "body": "This is a test GET cron!"
+    "body": "This is a test GET cron!",
+    "timeZone": "Europe/Lisbon"
   },
   {
     "uri": "teste",
     "httpMethod": "blablabla",
     "schedule": " */1 * * * * *",
-    "body": "????????"
+    "body": "????????",
+    "timeZone": "Europe/Lisbon"
   },
   {
     "uri": "b",
     "httpMethod": "get",
     "schedule": "*/2 * * * * *",
-    "body": "Hello from test2"
+    "body": "Hello from test2",
+    "timeZone": "Europe/Lisbon"
   },
   {
     "uri": "e",
     "httpMethod": "get",
     "schedule": "*/2 * * * * *",
-    "body": "Hello from test2"
+    "body": "Hello from test2",
+    "timeZone": "Europe/Lisbon"
   },
   {
     "uri": "d",
     "httpMethod": "get",
     "schedule": "*/2 * * * * *",
-    "body": "uri = d"
+    "body": "uri = d",
+    "timeZone": "Europe/Lisbon"
   },
   {
     "uri": "asdasdasd",
     "httpMethod": "get",
     "schedule": "*/1 * * * * *",
-    "body": "adsadasdasd"
+    "body": "adsadasdasd",
+    "timeZone": "Europe/Lisbon"
   },
   {
     "uri": "omgggggggg",
     "httpMethod": "get",
     "schedule": "*/1 * * * * *",
-    "body": "asdasdasdasd"
+    "body": "asdasdasdasd",
+    "timeZone": "Europe/Lisbon"
+  },
+  {
+    "uri": "boby",
+    "httpMethod": "get",
+    "schedule": "*/2 * * * * *",
+    "body": "blablablablalbalbla",
+    "timeZone": "Europe/Lisbon"
   }
 ]

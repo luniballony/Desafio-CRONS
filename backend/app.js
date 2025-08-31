@@ -4,7 +4,7 @@ import cron from "node-cron"; // criação server express
 import express from "express";
 import data from './data.json' with { type: 'json' }; 
 import { ListCrons, DeleteCron, CreateCron, EditCron} from "./cronActions.js";
-import { Time, Day, cronActivator } from "./cronActions.js";
+import { Time, Day, cronActivator} from "./cronActions.js";
 
 
 
@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json()); 
 
 // endpoint para ativar cron
-app.post("/cron/:uri", (req, res) => {
+app.post("/activate-cron/:uri", (req, res) => {
   const result = cronActivator(req.params.uri);
   res.json(result);
 });
@@ -21,9 +21,9 @@ app.post("/cron/:uri", (req, res) => {
 
 // endpoint para criar cron jobs
 app.post('/create-cron', (req, res) => {
-  const { uri, httpMethod, body, schedule } = req.body;
+  const { uri, httpMethod, schedule, timeZone, body } = req.body;
 
-  const result = CreateCron(uri, httpMethod, body, schedule);
+  const result = CreateCron(uri, httpMethod, schedule, timeZone, body);
 
   if (result.success) {
     res.status(201).json(result);
@@ -53,9 +53,9 @@ app.delete('/delete/:uriId', (req, res) => {
 // endpoint para editar
 app.put(`/editing/:uriId`, (req, res) => {
   const { uriId } = req.params;
-  const { httpMethod, schedule, body } = req.body;
+  const { httpMethod, schedule, timeZone, body } = req.body;
   
-  const result = EditCron(uriId, httpMethod, schedule, body);
+  const result = EditCron(uriId, httpMethod, schedule, timeZone, body);
 
   if (result.success) {
     res.status(200).json(result);

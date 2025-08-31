@@ -4,6 +4,11 @@ import fs from 'fs'; // permite manipular ficheiros
 import data from './data.json' with { type: 'json' }; 
 
 
+function utcTimestamp() {
+  const now = new Date();
+  return now.toISOString().replace("T", " ").replace("Z", " UTC");
+}
+
 
 // função para mostrar a hora atual
 export function Time() {
@@ -23,17 +28,16 @@ export function cronActivator(uri) {
   const cronData = data.find(c => c.uri === uri);
 
   if (!cronData) {
-    console.log(`No cron found with URI: /${uri}`);
     return { success: false, message: `No cron found with URI: /${uri}.` };
   }
 
-  // ativa o cron com os dados
   cron.schedule(cronData.schedule, () => {
-    const timestamp = `${Day()} ${Time()}`;
-    //console.log(`${timestamp} - ${cronData.body}`);
+    const timestamp = utcTimestamp();
+    console.log(`${timestamp} - ${cronData.body}`);
   }, {
-    timezone: cronData.timeZone
+    timezone: "UTC" 
   });
+
 
   const msg = `Cron activated with body: ${cronData.body}`;
   console.log(msg);
@@ -43,7 +47,7 @@ export function cronActivator(uri) {
 
 
 // função para criar crons
-export function CreateCron (uri, httpMethod, body, schedule) {
+export function CreateCron (uri, httpMethod, schedule, timeZone, body ) {
 
   // permite verificar httpMethods
   const validMethods = ["GET", "POST", "PUT", "DELETE"];
@@ -65,10 +69,9 @@ export function CreateCron (uri, httpMethod, body, schedule) {
 
   try {
     // adiciona o novo cron a data.json
-    data.push({uri: uri, httpMethod: httpMethod, schedule: schedule, body: body });
+    data.push({uri: uri, httpMethod: httpMethod, schedule: schedule, timeZone: timeZone, body: body });
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
 
-   //console.log(`New cron created: URI: /${uri} | Method: ${httpMethod} | Schedule: ${schedule} | Body: ${body}`);
     return { success: true, message: "Cron created successfully." };
   }
   catch (error) {
@@ -84,6 +87,7 @@ export function ListCrons() {
     uri: cron.uri,
     httpMethod: cron.httpMethod,
     schedule: cron.schedule,
+    timeZone: cron.timeZone,
     body: cron.body
   }));
 }
@@ -105,7 +109,7 @@ export function DeleteCron(uri) {
 
 
 // função para editar cron
-export function EditCron(uri, newHttpMethod, newSchedule, newBody) {
+export function EditCron(uri, newHttpMethod, newSchedule, newTimeZone, newBody) {
 
   const index = data.findIndex(cron => cron.uri === uri);
 
@@ -124,6 +128,7 @@ export function EditCron(uri, newHttpMethod, newSchedule, newBody) {
       ...data[index], 
       httpMethod: newHttpMethod, 
       schedule: newSchedule, 
+      timeZone: newTimeZone,
       body: newBody 
     });
 

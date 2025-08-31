@@ -8,7 +8,8 @@ function Create() {
   // estados para inputs
   const [uri, setUri] = useState("");
   const [httpMethod, setHttpMethod] = useState("");
-  const [schedule, setSchedule] = useState("");
+  const [schedule, setSchedule] = useState("");  
+  const [timeZone, setTimeZone] = useState("");
   const [body, setBody] = useState("");
 
   // função para tratar dos inputs
@@ -21,7 +22,7 @@ function Create() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ uri, httpMethod, schedule, body }),
+        body: JSON.stringify({ uri, httpMethod, schedule, timeZone, body }),
       });
 
       const result = await response.json();
@@ -66,6 +67,15 @@ function Create() {
           placeholder="insert the schedule"
           required
         />
+
+        <p>TIMEZONE:</p>
+        <select value={timeZone} onChange={e => setTimeZone(e.target.value)}>
+          <option value="UTC">UTC</option>
+          <option value="Europe/Lisbon">Europe/Lisbon</option>
+          <option value="America/New_York">America/New_York</option>
+          <option value="Asia/Tokyo">Asia/Tokyo</option>
+          <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+        </select>
 
         <p>BODY: </p>
         <input
