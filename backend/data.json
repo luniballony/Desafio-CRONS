@@ -2,8 +2,8 @@
   {
     "uri": "a",
     "httpMethod": "POST",
-    "schedule": "*/1 * * * * *",
-    "body": "This message shows every second"
+    "schedule": " */1 * * * * *",
+    "body": "MOREEEEEEEEEEE"
   },
   {
     "uri": "cron1",

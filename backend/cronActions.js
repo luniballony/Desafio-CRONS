@@ -30,7 +30,7 @@ export function cronActivator(uri) {
   // ativa o cron com os dados
   cron.schedule(cronData.schedule, () => {
     const timestamp = `${Day()} ${Time()}`;
-    console.log(`${timestamp} - ${cronData.body}`);
+    //console.log(`${timestamp} - ${cronData.body}`);
   }, {
     timezone: cronData.timeZone
   });
@@ -107,22 +107,20 @@ export function EditCron(uri, newHttpMethod, newSchedule, newBody) {
   const index = data.findIndex(cron => cron.uri === uri);
   if (index !== -1) {
     if(!newHttpMethod) {
-      console.log("Make sure you provide a valid http method.");
-      return;
+      return { success: false, message: `Make sure you provide a valid http method.` };
     }
     if(!newSchedule || !cron.validate(newSchedule)) {
-      console.log("Make sure you provide a valid schedule.");
-      return;
+      return { success: false, message: `Make sure you provide a valid schedule.` };
     } 
     if(!newBody) {
-      console.log("Make sure you provide a valid body.");
-      return;
+      return { success: false, message: `Make sure you provide a valid body.` };
     }
 
     data.splice(index, 1, { ...data[index], schedule: newSchedule, body: newBody });
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
     console.log(`Cron with URI: /${uri} has been edited.`);
     console.log(`new Cron: URI: /${data[index].uri} | Method: ${newHttpMethod} | Schedule: ${newSchedule} | Body: ${newBody}`);
+    return { success: true, message: `Cron with URI: /${uri} has been updated.` };
 
   } else {
     console.log(`No cron found with URI: /${uri}`);

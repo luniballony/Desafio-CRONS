@@ -3,7 +3,7 @@
 import cron from "node-cron"; // criação server express
 import express from "express";
 import data from './data.json' with { type: 'json' }; 
-import { ListCrons, DeleteCron, CreateCron } from "./cronActions.js";
+import { ListCrons, DeleteCron, CreateCron, EditCron} from "./cronActions.js";
 import { Time, Day, cronActivator } from "./cronActions.js";
 
 
@@ -49,6 +49,20 @@ app.delete('/delete/:uriId', (req, res) => {
     res.status(404).json(result);
   }
 });
+
+// endpoint para editar
+app.put(`/editing/:uriId`, (req, res) => {
+  const { httpMethod, body, schedule } = req.body;
+  const { uriId } = req.params;
+
+  const result = EditCron(uriId, httpMethod, schedule, body);
+
+  if (result.success) {
+    res.status(200).json(result);
+  } else {
+    res.status(400).json(result);
+  }
+})
 
 
 // função para iniciar o server
