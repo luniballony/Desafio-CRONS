@@ -3,7 +3,7 @@
 import express from "express";
 import { ListCrons, DeleteCron, CreateCron, EditCron} from "./cronActions.js";
 import { cronActivator} from "./cronActions.js";
-import fs from "fs";
+import { resetCrons} from './auxiliar.js'
 
 
 const app = express();
@@ -62,19 +62,11 @@ app.put(`/editing/:uriId`, (req, res) => {
   }
 })
 
-// marca todos os crons como não ativos
-function resetCrons() {
 
-  let data = JSON.parse(fs.readFileSync("data.json", "utf-8"));
-  data = data.map(c => ({ ...c, active: false }));
-  fs.writeFileSync("data.json", JSON.stringify(data, null, 2));
-
-}
 
 
 // função para iniciar o server
 function StartServer(port) {
-
   resetCrons();
 
   app.listen(port, () => {

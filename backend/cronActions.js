@@ -2,29 +2,7 @@
 import cron from "node-cron";
 import fs from 'fs'; // permite manipular ficheiros
 import data from './data.json' with { type: 'json' }; 
-
-
-// função para calcular a timezone
-function offsetToTimezone(offset) {
-  const intOffset = parseInt(offset, 10);
-
-  if (intOffset === 0) return "Etc/GMT";
-  if (intOffset > 0) return `Etc/GMT-${intOffset}`; 
-  if (intOffset < 0) return `Etc/GMT+${Math.abs(intOffset)}`; 
-}
-
-
-// função para mostrar a hora atual
-export function Time() {
-  const now = new Date();
-  return `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
-}
-
-// função para mostrar dia atual
-export function Day() {
-  const now = new Date();
-  return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-}
+import {offsetToTimezone} from './auxiliar.js'
 
 
 // função para ativar crons
@@ -109,7 +87,6 @@ export function DeleteCron(uri) {
     return { success: false, message: `No cron found with URI: /${uri}.` };
   } 
 }
-
 
 
 // função para editar cron

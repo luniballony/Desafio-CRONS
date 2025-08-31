@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
+
 function EditCron () {
 
 	const navigate = useNavigate();
 
   // estados para inputs
-  //const [uri, setUri] = useState("");
 	const {uriId}  = useParams();
 
   const [httpMethod, setHttpMethod] = useState("");

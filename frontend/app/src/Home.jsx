@@ -8,8 +8,8 @@ function Home () {
             <p>Select what you want to do:</p>
             <Link to='/list'>List all existing Crons</Link>
             <Link to='/create'>Create a new Cron</Link>
-            <Link to='/edit'>Edit an existing Cron</Link>
-            <Link to='/delete'>Delete a Cron</Link>
+            <Link to='/list'>Edit an existing Cron</Link>
+            <Link to='/list'>Delete a Cron</Link>
 
             <p>Thank you for your visit!</p>
         </div>)

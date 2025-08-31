@@ -7,8 +7,7 @@ function NavBar () {
             <Link to='/'>Home</Link>
             <Link to='/list'>List</Link>
             <Link to='/create'>Create</Link>
-            <Link to='/edit'>Edit</Link>
-            <Link to='/delete'>Delete</Link>
+            <Link to='/list'>Edit & Delete</Link>
         </nav>
     )
 }

@@ -5,7 +5,7 @@
     "schedule": "*/1 * * * * *",
     "body": "trying ",
     "timeZone": "0",
-    "active": true
+    "active": false
   },
   {
     "uri": "cron1",
@@ -21,7 +21,7 @@
     "schedule": "*/1 * * * * *",
     "body": "This is a temporary message.",
     "timeZone": "1",
-    "active": true
+    "active": false
   },
   {
     "uri": "testget",
