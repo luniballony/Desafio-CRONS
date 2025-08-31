@@ -29,8 +29,16 @@ export function Day() {
 
 // função para ativar crons
 export function cronActivator(uri) {
+  // procura cron nos dados
   const cronData = data.find(c => c.uri === uri);
 
+  // termina se não encontrar cron
+  if (!cronData) return { success: false, message: `No cron found with URI: /${uri}.` };
+  
+  if (cronData.active) {
+    return { success: false, message: `Cron ${uri} already active.` };
+  }
+    
   const timeZone = offsetToTimezone(cronData.timeZone || 0);
 
   cron.schedule(cronData.schedule, () => {
@@ -38,14 +46,14 @@ export function cronActivator(uri) {
     console.log(`${time} (Time Zone: UTC ${cronData.timeZone}) - ${cronData.body}`);
   }, { timezone: timeZone });
 
-  if (!cronData) {
-    return { success: false, message: `No cron found with URI: /${uri}.` };
-  }
+  // muda flag para ativo
+  cronData.active = true;
+  fs.writeFileSync("data.json", JSON.stringify(data, null, 2));
 
   const msg = `Cron activated with body: ${cronData.body}`;
   console.log(msg);
 
-  return { success: true, message: msg };
+  return { success: true, message: msg };  
 }
 
 
@@ -65,7 +73,7 @@ export function CreateCron (uri, httpMethod, schedule, timeZone, body ) {
 
   try {
     // adiciona o novo cron a data.json
-    data.push({uri: uri, httpMethod: httpMethod, schedule: schedule, timeZone: timeZone, body: body });
+    data.push({uri: uri, httpMethod: httpMethod, schedule: schedule, timeZone: timeZone, body: body, active: false});
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
 
     return { success: true, message: "Cron created successfully." };
@@ -125,7 +133,8 @@ export function EditCron(uri, newHttpMethod, newSchedule, newTimeZone, newBody) 
       httpMethod: newHttpMethod, 
       schedule: newSchedule, 
       timeZone: newTimeZone,
-      body: newBody 
+      body: newBody, 
+      active: false
     });
 
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2));

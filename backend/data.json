@@ -4,76 +4,87 @@
     "httpMethod": "get",
     "schedule": "*/1 * * * * *",
     "body": "trying ",
-    "timeZone": "0"
+    "timeZone": "0",
+    "active": true
   },
   {
     "uri": "cron1",
     "httpMethod": "get",
     "schedule": " */2 * * * * *",
     "body": "just trying something new",
-    "timeZone": "1"
+    "timeZone": "1",
+    "active": false
   },
   {
     "uri": "1",
     "httpMethod": "GET",
     "schedule": "*/1 * * * * *",
     "body": "This is a temporary message.",
-    "timeZone": "1"
+    "timeZone": "1",
+    "active": false
   },
   {
     "uri": "testget",
     "httpMethod": "get",
     "schedule": "* * * * *",
     "body": "This is a test GET cron!",
-    "timeZone": "0"
+    "timeZone": "0",
+    "active": true
   },
   {
     "uri": "teste",
     "httpMethod": "blablabla",
     "schedule": " */1 * * * * *",
     "body": "????????",
-    "timeZone": "1"
+    "timeZone": "1",
+    "active": false
   },
   {
     "uri": "b",
     "httpMethod": "get",
     "schedule": "*/2 * * * * *",
     "body": "Hello from test2",
-    "timeZone": "0"
+    "timeZone": "0",
+    "active": true
   },
   {
     "uri": "e",
     "httpMethod": "get",
     "schedule": "*/2 * * * * *",
     "body": "Hello from test2",
-    "timeZone": "0"
+    "timeZone": "0",
+    "active": true
   },
   {
     "uri": "d",
     "httpMethod": "get",
     "schedule": "*/2 * * * * *",
     "body": "uri = d",
-    "timeZone": "0"
+    "timeZone": "0",
+    "active": false
   },
   {
     "uri": "asdasdasd",
     "httpMethod": "get",
     "schedule": "*/1 * * * * *",
     "body": "adsadasdasd",
-    "timeZone": "0"
+    "timeZone": "0",
+    "active": false
   },
   {
     "uri": "omgggggggg",
     "httpMethod": "get",
     "schedule": "*/1 * * * * *",
     "body": "asdasdasdasd",
-    "timeZone": "0"
+    "timeZone": "0",
+    "active": false
   },
   {
     "uri": "boby",
     "httpMethod": "get",
     "schedule": "*/2 * * * * *",
     "body": "blablablablalbalbla",
-    "timeZone": "0"
+    "timeZone": "0",
+    "active": true
   }
 ]
