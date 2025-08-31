@@ -3,36 +3,54 @@ import cron from "node-cron";
 import fs from 'fs'; // permite manipular ficheiros
 import data from './data.json' with { type: 'json' }; 
 import {offsetToTimezone} from './auxiliar.js'
+import axios from 'axios';
 
+const EXTERNAL_SERVER_URL = 'http://localhost:3001';
 
 // função para ativar crons
 export function cronActivator(uri) {
-  // procura cron nos dados
   const cronData = data.find(c => c.uri === uri);
-
-  // termina se não encontrar cron
   if (!cronData) return { success: false, message: `No cron found with URI: /${uri}.` };
+  if (cronData.active) return { success: false, message: `Cron ${uri} already active.` };
   
-  if (cronData.active) {
-    return { success: false, message: `Cron ${uri} already active.` };
-  }
-    
   const timeZone = offsetToTimezone(cronData.timeZone || 0);
 
-  cron.schedule(cronData.schedule, () => {
+  cron.schedule(cronData.schedule, async () => {
     const time = new Date().toLocaleString("en-GB", { timeZone: timeZone });
-    console.log(`${time} (Time Zone: UTC ${cronData.timeZone}) - ${cronData.body}`);
-  }, { timezone: timeZone });
+    const message = `${time} (Time Zone: UTC ${cronData.timeZone}) - ${cronData.body}`;
+    
+    // Usa a rota específica do serviço externo
+    const targetUrl = `${EXTERNAL_SERVER_URL}/${uri}`;
 
-  // muda flag para ativo
+    try {
+      await axios({
+        method: cronData.httpMethod,
+        url: targetUrl,
+        data: { 
+          message: message,
+          originalUri: cronData.uri,
+          httpMethod: cronData.httpMethod
+        }
+      });
+      console.log(`[SUCESS] Notifcation sent to: ${targetUrl}`);
+    } catch (error) {
+      console.error(`[ERROR] error sending data to: ${error.message}`);
+    }
+  }, { 
+    timezone: timeZone,
+    scheduled: true
+  });
+
+  
   cronData.active = true;
   fs.writeFileSync("data.json", JSON.stringify(data, null, 2));
 
-  const msg = `Cron activated with body: ${cronData.body}`;
+  const msg = `Cron ativado para o URI: ${cronData.uri}`;
   console.log(msg);
 
-  return { success: true, message: msg };  
+  return { success: true, message: msg };
 }
+
 
 
 // função para criar crons
