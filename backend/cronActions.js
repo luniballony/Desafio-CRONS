@@ -8,9 +8,9 @@ import data from './data.json' with { type: 'json' };
 function offsetToTimezone(offset) {
   const intOffset = parseInt(offset, 10);
 
-  if (intOffset === 0) return "Etc/GMT"; // UTC
-  if (intOffset > 0) return `Etc/GMT-${intOffset}`; // UTC+X → GMT-X
-  if (intOffset < 0) return `Etc/GMT+${Math.abs(intOffset)}`; // UTC-X → GMT+X
+  if (intOffset === 0) return "Etc/GMT";
+  if (intOffset > 0) return `Etc/GMT-${intOffset}`; 
+  if (intOffset < 0) return `Etc/GMT+${Math.abs(intOffset)}`; 
 }
 
 
@@ -56,19 +56,12 @@ export function CreateCron (uri, httpMethod, schedule, timeZone, body ) {
   const validMethods = ["GET", "POST", "PUT", "DELETE"];
 
   const index = data.findIndex(cron => cron.uri === uri);
-    if (index !== -1 || !uri) {
-      return { success: false, message: `That URI is already in use: /${uri}` };
-    }
 
-    if (!cron.validate(schedule) || !schedule) {
-      return { success: false, message: "Make sure you provide a valid schedule." };
-    }
-
-    if (!httpMethod || !validMethods.includes(httpMethod.toUpperCase())) {
-      return { success: false, message: "Make sure you provide a valid http method." };
-    }
-    
-    if (!body) return { success: false, message: "Make sure you provide a body." };
+  // verificação de parametros
+  if (!uri || index !== -1) return { success: false, message: `That URI is already in use: /${uri}` };
+  if (!schedule || !cron.validate(schedule) ) return { success: false, message: "Make sure you provide a valid schedule." };
+  if (!httpMethod || !validMethods.includes(httpMethod.toUpperCase())) return { success: false, message: "Make sure you provide a valid http method." };
+  if (!body) return { success: false, message: "Make sure you provide a body." };
 
   try {
     // adiciona o novo cron a data.json

@@ -11,13 +11,6 @@ function ViewCron () {
   // gets data  
   const cron = GetSpecificCron(uriId)
 
-  // ativa o cron
-  /*
-  fetch(`/activate-cron/${uriId}`, { method: "POST" })
-  .then(res => res.json())
-  .then(data => console.log(data.message));
-  */
-
   useEffect(() => {
     fetch(`/activate-cron/${uriId}`, { method: "POST" })
     .then(res => res.json())
@@ -35,7 +28,7 @@ function ViewCron () {
           <p>{`TIMEZONE: UTC ${cron.timeZone}`}</p>
           <p>{`BODY: ${cron.body}`}</p>
         </div>) :
-        (<p>cant load</p>)
+        (<p>Loading...</p>)
       )}
     </div>)
 }
