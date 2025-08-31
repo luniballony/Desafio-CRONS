@@ -23,7 +23,7 @@ function ViewCron () {
           <p>{`URI: ${cron.uri}`}</p>
           <p>{`HTTP METHOD: ${cron.httpMethod}`}</p>
           <p>{`SCHEDULE: ${cron.schedule}`}</p>
-          <p>{`TIMEZONE: ${cron.timeZone}`}</p>
+          <p>{`TIMEZONE: UTC ${cron.timeZone}`}</p>
           <p>{`BODY: ${cron.body}`}</p>
         </div>) :
         (<p>cant load</p>)

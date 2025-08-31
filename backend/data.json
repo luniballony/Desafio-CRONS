@@ -4,76 +4,76 @@
     "httpMethod": "get",
     "schedule": "*/1 * * * * *",
     "body": "trying ",
-    "timeZone": "America/New_York"
+    "timeZone": "0"
   },
   {
     "uri": "cron1",
     "httpMethod": "get",
     "schedule": " */2 * * * * *",
     "body": "just trying something new",
-    "timeZone": "Europe/Lisbon"
+    "timeZone": "1"
   },
   {
     "uri": "1",
     "httpMethod": "GET",
     "schedule": "*/1 * * * * *",
     "body": "This is a temporary message.",
-    "timeZone": "Europe/Lisbon"
+    "timeZone": "1"
   },
   {
     "uri": "testget",
     "httpMethod": "get",
     "schedule": "* * * * *",
     "body": "This is a test GET cron!",
-    "timeZone": "Europe/Lisbon"
+    "timeZone": "0"
   },
   {
     "uri": "teste",
     "httpMethod": "blablabla",
     "schedule": " */1 * * * * *",
     "body": "????????",
-    "timeZone": "Europe/Lisbon"
+    "timeZone": "1"
   },
   {
     "uri": "b",
     "httpMethod": "get",
     "schedule": "*/2 * * * * *",
     "body": "Hello from test2",
-    "timeZone": "Europe/Lisbon"
+    "timeZone": "0"
   },
   {
     "uri": "e",
     "httpMethod": "get",
     "schedule": "*/2 * * * * *",
     "body": "Hello from test2",
-    "timeZone": "Europe/Lisbon"
+    "timeZone": "0"
   },
   {
     "uri": "d",
     "httpMethod": "get",
     "schedule": "*/2 * * * * *",
     "body": "uri = d",
-    "timeZone": "Europe/Lisbon"
+    "timeZone": "0"
   },
   {
     "uri": "asdasdasd",
     "httpMethod": "get",
     "schedule": "*/1 * * * * *",
     "body": "adsadasdasd",
-    "timeZone": "Europe/Lisbon"
+    "timeZone": "0"
   },
   {
     "uri": "omgggggggg",
     "httpMethod": "get",
     "schedule": "*/1 * * * * *",
     "body": "asdasdasdasd",
-    "timeZone": "Europe/Lisbon"
+    "timeZone": "0"
   },
   {
     "uri": "boby",
     "httpMethod": "get",
     "schedule": "*/2 * * * * *",
     "body": "blablablablalbalbla",
-    "timeZone": "Europe/Lisbon"
+    "timeZone": "0"
   }
 ]

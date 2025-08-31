@@ -1,11 +1,8 @@
 // ficheiro principal do backend 
 
-import cron from "node-cron"; // criação server express
 import express from "express";
-import data from './data.json' with { type: 'json' }; 
 import { ListCrons, DeleteCron, CreateCron, EditCron} from "./cronActions.js";
-import { Time, Day, cronActivator} from "./cronActions.js";
-
+import { cronActivator} from "./cronActions.js";
 
 
 const app = express();

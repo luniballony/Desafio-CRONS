@@ -4,9 +4,13 @@ import fs from 'fs'; // permite manipular ficheiros
 import data from './data.json' with { type: 'json' }; 
 
 
-function utcTimestamp() {
-  const now = new Date();
-  return now.toISOString().replace("T", " ").replace("Z", " UTC");
+// função para calcular a timezone
+function offsetToTimezone(offset) {
+  const intOffset = parseInt(offset, 10);
+
+  if (intOffset === 0) return "Etc/GMT"; // UTC
+  if (intOffset > 0) return `Etc/GMT-${intOffset}`; // UTC+X → GMT-X
+  if (intOffset < 0) return `Etc/GMT+${Math.abs(intOffset)}`; // UTC-X → GMT+X
 }
 
 
@@ -27,17 +31,16 @@ export function Day() {
 export function cronActivator(uri) {
   const cronData = data.find(c => c.uri === uri);
 
+  const timeZone = offsetToTimezone(cronData.timeZone || 0);
+
+  cron.schedule(cronData.schedule, () => {
+    const time = new Date().toLocaleString("en-GB", { timeZone: timeZone });
+    console.log(`${time} (Time Zone: UTC ${cronData.timeZone}) - ${cronData.body}`);
+  }, { timezone: timeZone });
+
   if (!cronData) {
     return { success: false, message: `No cron found with URI: /${uri}.` };
   }
-
-  cron.schedule(cronData.schedule, () => {
-    const timestamp = utcTimestamp();
-    console.log(`${timestamp} - ${cronData.body}`);
-  }, {
-    timezone: "UTC" 
-  });
-
 
   const msg = `Cron activated with body: ${cronData.body}`;
   console.log(msg);

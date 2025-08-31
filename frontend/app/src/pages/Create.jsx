@@ -70,12 +70,36 @@ function Create() {
 
         <p>TIMEZONE:</p>
         <select value={timeZone} onChange={e => setTimeZone(e.target.value)}>
-          <option value="UTC">UTC</option>
-          <option value="Europe/Lisbon">Europe/Lisbon</option>
-          <option value="America/New_York">America/New_York</option>
-          <option value="Asia/Tokyo">Asia/Tokyo</option>
-          <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+          <option value="-12">UTC-12</option>
+          <option value="-11">UTC-11</option>
+          <option value="-10">UTC-10</option>
+          <option value="-9">UTC-9</option>
+          <option value="-8">UTC-8</option>
+          <option value="-7">UTC-7</option>
+          <option value="-6">UTC-6</option>
+          <option value="-5">UTC-5</option>
+          <option value="-4">UTC-4</option>
+          <option value="-3">UTC-3</option>
+          <option value="-2">UTC-2</option>
+          <option value="-1">UTC-1</option> 
+          <option value="0">UTC</option>
+          <option value="1">UTC+1</option>          
+          <option value="2">UTC+2</option>
+          <option value="3">UTC+3</option>
+          <option value="4">UTC+4</option>
+          <option value="5">UTC+5</option>
+          <option value="6">UTC+6</option>
+          <option value="7">UTC+7</option>
+          <option value="8">UTC+8</option>
+          <option value="9">UTC+9</option>
+          <option value="10">UTC+10</option>
+          <option value="11">UTC+11</option>
+          <option value="12">UTC+12</option>
+          <option value="13">UTC+13</option>
+          <option value="14">UTC+14</option>
         </select>
+
+        <p>To learn more about UTC schedule go to: </p>
 
         <p>BODY: </p>
         <input
