@@ -19,14 +19,14 @@ app.all('/:uriId', (req, res) => {
         fs.appendFileSync('cron_log.txt', logMessage);
         res.status(200).send('Notification received!');
     } else {
-        res.status(400).send('Something went wrong :s.');
+        res.status(400).send('Something went wrong.');
     }
 });
 
 
 app.listen(PORT, () => {
     console.log('Endpoint: POST http://localhost:3001');
-    
+
     // Cria o arquivo de log se não existir
     if (!fs.existsSync('cron_log.txt')) {
         fs.writeFileSync('cron_log.txt', '');

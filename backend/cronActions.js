@@ -16,8 +16,7 @@ export function cronActivator(uri) {
   const timeZone = offsetToTimezone(cronData.timeZone || 0);
 
   cron.schedule(cronData.schedule, async () => {
-    const time = new Date().toLocaleString("en-GB", { timeZone: timeZone });
-    const message = `${time} (Time Zone: UTC ${cronData.timeZone}) - ${cronData.body}`;
+    const message = `(Time Zone: UTC ${cronData.timeZone}) - ${cronData.body}`;
     
     // Usa a rota específica do serviço externo
     const targetUrl = `${EXTERNAL_SERVER_URL}/${uri}`;

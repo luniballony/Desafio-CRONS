@@ -3,9 +3,9 @@
     "uri": "a",
     "httpMethod": "get",
     "schedule": "*/1 * * * * *",
-    "body": "trying ",
-    "timeZone": "0",
-    "active": false
+    "body": "ALERT ALERT ALERTN ALERT",
+    "timeZone": "3",
+    "active": true
   },
   {
     "uri": "cron1",
@@ -13,7 +13,7 @@
     "schedule": " */2 * * * * *",
     "body": "just trying something new",
     "timeZone": "1",
-    "active": false
+    "active": true
   },
   {
     "uri": "1",
@@ -53,7 +53,7 @@
     "schedule": "*/2 * * * * *",
     "body": "Hello from test2",
     "timeZone": "0",
-    "active": false
+    "active": true
   },
   {
     "uri": "d",
@@ -93,14 +93,14 @@
     "schedule": "*/2 * * * * *",
     "timeZone": 0,
     "body": "Teste de mensagem cron",
-    "active": false
+    "active": true
   },
   {
     "uri": "test-external",
-    "httpMethod": "POST",
-    "schedule": "*/2 * * * * *",
-    "timeZone": 0,
-    "body": "Teste de mensagem cron",
+    "httpMethod": "GET",
+    "schedule": "*/1 * * * * *",
+    "timeZone": "",
+    "body": "999999999999999999999",
     "active": true
   }
 ]
