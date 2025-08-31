@@ -19,7 +19,7 @@ app.all('/:uriId', (req, res) => {
         fs.appendFileSync('cron_log.txt', logMessage);
         res.status(200).send('Notification received!');
     } else {
-        res.status(400).send('Something went wrong.');
+        res.status(400).send('Something went wrong regarding the body.');
     }
 });
 

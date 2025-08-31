@@ -5,7 +5,7 @@
     "schedule": "*/1 * * * * *",
     "body": "ALERT ALERT ALERTN ALERT",
     "timeZone": "3",
-    "active": true
+    "active": false
   },
   {
     "uri": "cron1",
@@ -13,7 +13,7 @@
     "schedule": " */2 * * * * *",
     "body": "just trying something new",
     "timeZone": "1",
-    "active": true
+    "active": false
   },
   {
     "uri": "1",
@@ -53,7 +53,7 @@
     "schedule": "*/2 * * * * *",
     "body": "Hello from test2",
     "timeZone": "0",
-    "active": true
+    "active": false
   },
   {
     "uri": "d",
@@ -61,7 +61,7 @@
     "schedule": "*/2 * * * * *",
     "body": "uri = d",
     "timeZone": "0",
-    "active": true
+    "active": false
   },
   {
     "uri": "asdasdasd",
@@ -69,7 +69,7 @@
     "schedule": "*/1 * * * * *",
     "body": "adsadasdasd",
     "timeZone": "0",
-    "active": true
+    "active": false
   },
   {
     "uri": "omgggggggg",
@@ -77,7 +77,7 @@
     "schedule": "*/1 * * * * *",
     "body": "asdasdasdasd",
     "timeZone": "0",
-    "active": true
+    "active": false
   },
   {
     "uri": "boby",
@@ -85,7 +85,7 @@
     "schedule": "*/2 * * * * *",
     "body": "blablablablalbalbla",
     "timeZone": "0",
-    "active": true
+    "active": false
   },
   {
     "uri": "test-cron1111",
@@ -93,7 +93,7 @@
     "schedule": "*/2 * * * * *",
     "timeZone": 0,
     "body": "Teste de mensagem cron",
-    "active": true
+    "active": false
   },
   {
     "uri": "test-external",
@@ -101,6 +101,6 @@
     "schedule": "*/1 * * * * *",
     "timeZone": "",
     "body": "999999999999999999999",
-    "active": true
+    "active": false
   }
 ]
