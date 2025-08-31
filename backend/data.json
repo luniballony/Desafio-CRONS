@@ -1,15 +1,15 @@
 [
   {
     "uri": "a",
-    "httpMethod": "POST",
+    "httpMethod": "get",
     "schedule": " */1 * * * * *",
-    "body": "MOREEEEEEEEEEE"
+    "body": "GET TEST"
   },
   {
     "uri": "cron1",
-    "httpMethod": "GET",
-    "schedule": "*/2 * * * * *",
-    "body": "Edited cron 1 executed!"
+    "httpMethod": "get",
+    "schedule": " */2 * * * * *",
+    "body": "just trying something new"
   },
   {
     "uri": "1",
@@ -25,9 +25,9 @@
   },
   {
     "uri": "teste",
-    "httpMethod": "get",
-    "schedule": "*/1 * * * * *",
-    "body": "This is a test GET cron!"
+    "httpMethod": "blablabla",
+    "schedule": " */1 * * * * *",
+    "body": "????????"
   },
   {
     "uri": "b",

@@ -52,9 +52,9 @@ app.delete('/delete/:uriId', (req, res) => {
 
 // endpoint para editar
 app.put(`/editing/:uriId`, (req, res) => {
-  const { httpMethod, body, schedule } = req.body;
   const { uriId } = req.params;
-
+  const { httpMethod, schedule, body } = req.body;
+  
   const result = EditCron(uriId, httpMethod, schedule, body);
 
   if (result.success) {

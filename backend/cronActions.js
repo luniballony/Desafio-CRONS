@@ -44,28 +44,31 @@ export function cronActivator(uri) {
 
 // função para criar crons
 export function CreateCron (uri, httpMethod, body, schedule) {
+
+  // permite verificar httpMethods
+  const validMethods = ["GET", "POST", "PUT", "DELETE"];
+
   const index = data.findIndex(cron => cron.uri === uri);
     if (index !== -1 || !uri) {
-      console.log(`Thar uri is already in use or invalid: /${uri}`);
       return { success: false, message: `That URI is already in use: /${uri}` };
     }
 
     if (!cron.validate(schedule) || !schedule) {
-      console.log(`Invalid cron expression: ${schedule}`);
-      return;
+      return { success: false, message: "Make sure you provide a valid schedule." };
     }
-    if (!uri || !httpMethod || !schedule || !body) {
-    const message = "All fields (uri, httpMethod, schedule, body) are required.";
-    console.log(message);
-    return { success: false, message: message };
-  }
+
+    if (!httpMethod || !validMethods.includes(httpMethod.toUpperCase())) {
+      return { success: false, message: "Make sure you provide a valid http method." };
+    }
+    
+    if (!body) return { success: false, message: "Make sure you provide a body." };
 
   try {
     // adiciona o novo cron a data.json
     data.push({uri: uri, httpMethod: httpMethod, schedule: schedule, body: body });
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
 
-    console.log(`New cron created: URI: /${uri} | Method: ${httpMethod} | Schedule: ${schedule} | Body: ${body}`);
+   //console.log(`New cron created: URI: /${uri} | Method: ${httpMethod} | Schedule: ${schedule} | Body: ${body}`);
     return { success: true, message: "Cron created successfully." };
   }
   catch (error) {
@@ -92,10 +95,9 @@ export function DeleteCron(uri) {
   if (index !== -1) {
     data.splice(index, 1);
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
-    console.log(`Cron with URI: /${uri} has been deleted.`);
-     return { success: true, message: `Cron with URI: /${uri} has been deleted.` };
+    return { success: true, message: `Cron with URI: /${uri} has been deleted.` };
+
   } else {
-    console.log(`No cron found with URI: /${uri}`);
     return { success: false, message: `No cron found with URI: /${uri}.` };
   } 
 }
@@ -104,26 +106,33 @@ export function DeleteCron(uri) {
 
 // função para editar cron
 export function EditCron(uri, newHttpMethod, newSchedule, newBody) {
-  const index = data.findIndex(cron => cron.uri === uri);
-  if (index !== -1) {
-    if(!newHttpMethod) {
-      return { success: false, message: `Make sure you provide a valid http method.` };
-    }
-    if(!newSchedule || !cron.validate(newSchedule)) {
-      return { success: false, message: `Make sure you provide a valid schedule.` };
-    } 
-    if(!newBody) {
-      return { success: false, message: `Make sure you provide a valid body.` };
-    }
 
-    data.splice(index, 1, { ...data[index], schedule: newSchedule, body: newBody });
+  const index = data.findIndex(cron => cron.uri === uri);
+
+  // permite verificar httpMethods
+  const validMethods = ["GET", "POST", "PUT", "DELETE"];
+
+  if (index !== -1) {
+    if (!newHttpMethod || !validMethods.includes(newHttpMethod.toUpperCase())) {
+      return { success: false, message: "Make sure you provide a valid http method." };
+    }
+    if(!newSchedule ) return { success: false, message: `Make sure you provide a valid schedule.` };
+    if(!newBody) return { success: false, message: `Make sure you provide a valid body.` };
+  
+
+    data.splice(index, 1, { 
+      ...data[index], 
+      httpMethod: newHttpMethod, 
+      schedule: newSchedule, 
+      body: newBody 
+    });
+
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
-    console.log(`Cron with URI: /${uri} has been edited.`);
-    console.log(`new Cron: URI: /${data[index].uri} | Method: ${newHttpMethod} | Schedule: ${newSchedule} | Body: ${newBody}`);
+   
     return { success: true, message: `Cron with URI: /${uri} has been updated.` };
 
   } else {
-    console.log(`No cron found with URI: /${uri}`);
+    return { success: false, message: `No cron found with URI: /${uri}` };
   } 
 }
 
