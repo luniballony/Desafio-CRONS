@@ -21,7 +21,7 @@
     "schedule": "*/1 * * * * *",
     "body": "This is a temporary message.",
     "timeZone": "1",
-    "active": false
+    "active": true
   },
   {
     "uri": "testget",
@@ -29,7 +29,7 @@
     "schedule": "* * * * *",
     "body": "This is a test GET cron!",
     "timeZone": "0",
-    "active": true
+    "active": false
   },
   {
     "uri": "teste",
@@ -45,7 +45,7 @@
     "schedule": "*/2 * * * * *",
     "body": "Hello from test2",
     "timeZone": "0",
-    "active": true
+    "active": false
   },
   {
     "uri": "e",
@@ -53,7 +53,7 @@
     "schedule": "*/2 * * * * *",
     "body": "Hello from test2",
     "timeZone": "0",
-    "active": true
+    "active": false
   },
   {
     "uri": "d",
@@ -85,6 +85,6 @@
     "schedule": "*/2 * * * * *",
     "body": "blablablablalbalbla",
     "timeZone": "0",
-    "active": true
+    "active": false
   }
 ]
