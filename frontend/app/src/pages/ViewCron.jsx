@@ -1,6 +1,7 @@
 // página para ver cron individualmente
 import { useParams } from "react-router-dom";
 import {GetSpecificCron} from '../hooks/FetchData'
+import { useEffect } from "react";
 
 
 function ViewCron () {
@@ -11,9 +12,17 @@ function ViewCron () {
   const cron = GetSpecificCron(uriId)
 
   // ativa o cron
+  /*
   fetch(`/activate-cron/${uriId}`, { method: "POST" })
   .then(res => res.json())
   .then(data => console.log(data.message));
+  */
+
+  useEffect(() => {
+    fetch(`/activate-cron/${uriId}`, { method: "POST" })
+    .then(res => res.json())
+    .then(data => console.log(data.message));
+  }, []);
 
   
   return (

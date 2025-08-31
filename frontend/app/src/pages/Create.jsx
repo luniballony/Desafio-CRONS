@@ -100,6 +100,7 @@ function Create() {
         </select>
 
         <p>To learn more about UTC schedule go to: </p>
+        <a href="https://en.wikipedia.org/wiki/List_of_UTC_offsets">List of UTC & countries</a>
 
         <p>BODY: </p>
         <input
