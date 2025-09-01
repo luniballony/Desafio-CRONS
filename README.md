@@ -1,5 +1,5 @@
 # Desafio FullStack CRONS <br>
-Este é um projeto full-stack para o desafio CRONS, que tem como objetivo a criação de um serviço de agendamento de tarefas (CRON jobs) com uma API RESTful e uma interface de usuário para sua gestão.
+Este é um projeto full-stack para o desafio CRONS, que tem como objetivo a criação de um serviço de agendamento de tarefas (CRON jobs) com uma API RESTful e uma interface para sua gestão.
 
 **Objetivo** <br>
 O principal objetivo do projeto é desenvolver um serviço capaz de gerenciar CRON jobs. Este serviço deve expor uma API para a configuração das tarefas e um frontend para interagir com essa API de forma intuitiva.
