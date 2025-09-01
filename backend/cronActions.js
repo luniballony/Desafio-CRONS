@@ -7,6 +7,9 @@ import axios from 'axios';
 
 const EXTERNAL_SERVER_URL = 'http://localhost:3001';
 
+// guarda crons ativos
+const activeCrons = {};
+
 // função para ativar crons
 export function cronActivator(uri) {
   const cronData = data.find(c => c.uri === uri);
@@ -15,10 +18,9 @@ export function cronActivator(uri) {
   
   const timeZone = offsetToTimezone(cronData.timeZone || 0);
 
-  cron.schedule(cronData.schedule, async () => {
+  // cria cron job e guarda referência
+  const job = cron.schedule(cronData.schedule, async () => {
     const message = `(Time Zone: UTC ${cronData.timeZone}) - ${cronData.body}`;
-    
-    // Usa a rota específica do serviço externo
     const targetUrl = `${EXTERNAL_SERVER_URL}/${uri}`;
 
     try {
@@ -31,7 +33,7 @@ export function cronActivator(uri) {
           httpMethod: cronData.httpMethod
         }
       });
-      console.log(`[SUCESS] Notifcation sent to: ${targetUrl}`);
+      console.log(`[SUCESS] Notification sent to: ${targetUrl}`);
     } catch (error) {
       console.error(`[ERROR] error sending data to: ${error.message}`);
     }
@@ -40,7 +42,9 @@ export function cronActivator(uri) {
     scheduled: true
   });
 
-  
+  // guarda o job ativo no mapa
+  activeCrons[uri] = job;
+
   cronData.active = true;
   fs.writeFileSync("data.json", JSON.stringify(data, null, 2));
 
@@ -49,7 +53,6 @@ export function cronActivator(uri) {
 
   return { success: true, message: msg };
 }
-
 
 
 // função para criar crons
@@ -96,6 +99,14 @@ export function ListCrons() {
 export function DeleteCron(uri) {
   const index = data.findIndex(cron => cron.uri === uri);
   if (index !== -1) {
+
+    // se o cron estiver ativo, para e remove da memória
+    if (activeCrons[uri]) {
+      activeCrons[uri].stop();
+      activeCrons[uri].destroy();
+      delete activeCrons[uri];
+    }
+
     data.splice(index, 1);
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
     return { success: true, message: `Cron with URI: /${uri} has been deleted.` };
@@ -106,12 +117,10 @@ export function DeleteCron(uri) {
 }
 
 
+
 // função para editar cron
 export function EditCron(uri, newHttpMethod, newSchedule, newTimeZone, newBody) {
-
   const index = data.findIndex(cron => cron.uri === uri);
-
-  // permite verificar httpMethods
   const validMethods = ["GET", "POST", "PUT", "DELETE"];
 
   if (index !== -1) {
@@ -120,7 +129,13 @@ export function EditCron(uri, newHttpMethod, newSchedule, newTimeZone, newBody) 
     }
     if(!newSchedule ) return { success: false, message: `Make sure you provide a valid schedule.` };
     if(!newBody) return { success: false, message: `Make sure you provide a valid body.` };
-  
+
+    // para cron ativo se existir
+    if (activeCrons[uri]) {
+      activeCrons[uri].stop();
+      activeCrons[uri].destroy();
+      delete activeCrons[uri];
+    }
 
     data.splice(index, 1, { 
       ...data[index], 
@@ -133,10 +148,11 @@ export function EditCron(uri, newHttpMethod, newSchedule, newTimeZone, newBody) 
 
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
    
-    return { success: true, message: `Cron with URI: /${uri} has been updated.` };
+    return { success: true, message: `Cron with URI: /${uri} has been updated. Reactivate it to start running.` };
 
   } else {
     return { success: false, message: `No cron found with URI: /${uri}` };
   } 
 }
+
 

@@ -6,6 +6,12 @@ const PORT = 3001;
 
 app.use(express.json());
 
+/*
+app.get('/', (req, res) => {
+    res.send('Please look at the cron_log.txt file for cron job notifications.');
+});
+*/
+
 // Rota específica para receber notificações do cron
 app.all('/:uriId', (req, res) => {
 
