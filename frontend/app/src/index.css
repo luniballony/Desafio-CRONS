@@ -88,4 +88,93 @@ nav a.active {
 }
 
 
+/*==============*/
+/*  LIST PAGE   */
+/*==============*/
+
+
+.list-container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  color: #333;
 }
+
+.list-container h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1e1e2f;
+}
+
+.cron-card {
+  background: #f8f8fa;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cron-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.cron-info {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.cron-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.cron-actions a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.cron-actions a:nth-child(1) {
+  background-color: #0077cc;
+  color: white;
+}
+.cron-actions a:nth-child(1):hover {
+  background-color: #005fa3;
+}
+
+.cron-actions a:nth-child(2) {
+  background-color: #00d1b2;
+  color: white;
+}
+.cron-actions a:nth-child(2):hover {
+  background-color: #00a189;
+}
+
+.cron-actions a:nth-child(3) {
+  background-color: #e63946;
+  color: white;
+}
+.cron-actions a:nth-child(3):hover {
+  background-color: #b91c1c;
+}
+
+
+
+
+/*==============*/
+/*  EDIT PAGE   */
+/*==============*/
+
+/*==============*/
+/*  DELETE PAGE */
+/*==============*/
+
+
+/*==============*/
+/*  VIEW PAGE   */
+/*==============*/
