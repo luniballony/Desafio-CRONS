@@ -2,6 +2,7 @@
 import { useParams } from "react-router-dom";
 import {GetSpecificCron} from '../hooks/FetchData'
 import { useEffect } from "react";
+import '../index.css';
 
 
 function ViewCron () {
@@ -19,18 +20,21 @@ function ViewCron () {
 
   
   return (
-    <div>
-      {(cron ? (
-        <div >
-          <p>{`URI: ${cron.uri}`}</p>
-          <p>{`HTTP METHOD: ${cron.httpMethod}`}</p>
-          <p>{`SCHEDULE: ${cron.schedule}`}</p>
-          <p>{`TIMEZONE: UTC ${cron.timeZone}`}</p>
-          <p>{`BODY: ${cron.body}`}</p>
-        </div>) :
-        (<p>Loading...</p>)
+     <div className="view-container">
+     <h2>CRON Details</h2>
+      {cron ? (
+        <div className="cron-details">
+          <p><strong>URI:</strong> {cron.uri}</p>
+          <p><strong>HTTP METHOD:</strong> {cron.httpMethod}</p>
+          <p><strong>SCHEDULE:</strong> {cron.schedule}</p>
+          <p><strong>TIMEZONE:</strong> UTC {cron.timeZone}</p>
+          <p><strong>BODY:</strong> {cron.body}</p>
+        </div>
+      ) : (
+        <p>Loading...</p>
       )}
-    </div>)
+    </div>
+  );
 }
 
 export default ViewCron
