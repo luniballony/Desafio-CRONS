@@ -35,12 +35,9 @@ function EditCron () {
 
 			
       if (response.ok) {
-        alert("Cron updated successfully!");
-
-        // redireciona para ver o cron criado
         navigate(`/view/${uriId}`);
       } else {
-        alert(`Erro: ${result.message}`);
+        alert(`Error: ${result.message}`);
       }
     } catch (err) {
       console.error("Error at editing cron:", err);

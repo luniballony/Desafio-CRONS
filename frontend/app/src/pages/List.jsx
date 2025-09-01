@@ -16,7 +16,7 @@ const List = () => {
             <p><strong>URI:</strong> {item.uri}</p>
             <p><strong>HTTP Method:</strong> {item.httpMethod}</p>
             <p><strong>Schedule:</strong> {item.schedule}</p>
-            <p><strong>Time Zone:</strong> {item.timeZone}</p>
+            <p><strong>Time Zone:</strong> UTC {item.timeZone}</p>
             <p><strong>Body:</strong> {item.body}</p>
           </div>
           <div className="cron-actions">

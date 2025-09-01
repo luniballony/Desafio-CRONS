@@ -29,11 +29,9 @@ function Create() {
       const result = await response.json();
 
       if (response.ok) {
-        alert("Cron created successfully!");
-        // redireciona para ver o cron criado
         navigate(`/view/${uri}`);
       } else {
-        alert(`Erro: ${result.message}`);
+        alert(`Error: ${result.message}`);
       }
     } catch (err) {
       console.error("Error at creating cron:", err);

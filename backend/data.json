@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "uri": "example_1",
+    "httpMethod": "get",
+    "schedule": "*/2 * * * * *",
+    "timeZone": "6",
+    "body": "This is an example and a manual test to run a cron job.",
+    "active": true
+  }
+]

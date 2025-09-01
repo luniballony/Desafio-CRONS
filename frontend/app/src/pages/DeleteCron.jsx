@@ -19,7 +19,7 @@ function DeleteCron () {
       if (response.ok) {
         navigate("/list"); 
       } else {
-        alert(`Erro: ${result.message}`);
+        alert(`Error: ${result.message}`);
       }
     } catch (err) {
       console.error("There was an error deleting this cron:", err);
