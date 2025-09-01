@@ -165,6 +165,83 @@ nav a.active {
 
 
 
+/*==============*/
+/*  CREATE PAGE */
+/*==============*/
+
+
+.create-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f8f8fa;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.create-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1e1e2f;
+}
+
+.create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.create-form label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.create-form input,
+.create-form select {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.create-form input:focus,
+.create-form select:focus {
+  border-color: #00d1b2;
+}
+
+.create-form a {
+  font-size: 0.9rem;
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.create-form a:hover {
+  text-decoration: underline;
+}
+
+.create-form button {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background-color: #00d1b2;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.create-form button:hover {
+  background-color: #00a189;
+  transform: translateY(-2px);
+}
+
+
 
 /*==============*/
 /*  EDIT PAGE   */

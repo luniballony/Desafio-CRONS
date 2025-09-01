@@ -1,6 +1,7 @@
 // ficheiro para criar novo cron
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import '../index.css'
 
 function Create() {
   const navigate = useNavigate();
@@ -41,76 +42,57 @@ function Create() {
   }
 
   return (
-    <div>
+    <div className="create-container">
       <h2>Create a new CRON</h2>
-      <form onSubmit={handleSubmit}>
-        <p>URI: </p>
+      <form className="create-form" onSubmit={handleSubmit}>
+        <label>URI:</label>
         <input
           value={uri}
           onChange={(e) => setUri(e.target.value)}
-          placeholder="insert the uri which will be the CRON id"
+          placeholder="Insert the URI (will be the CRON id)"
           required
         />
 
-        <p>HTTP METHOD: </p>
+        <label>HTTP METHOD:</label>
         <input
           value={httpMethod}
           onChange={(e) => setHttpMethod(e.target.value)}
-          placeholder="insert the http method"
+          placeholder="Insert the HTTP method (e.g. POST)"
           required
         />
 
-        <p>SCHEDULE: </p>
+        <label>SCHEDULE:</label>
         <input
           value={schedule}
           onChange={(e) => setSchedule(e.target.value)}
-          placeholder="insert the schedule"
+          placeholder="Insert the schedule (e.g. */5 * * * *)"
           required
         />
 
-        <p>TIMEZONE:</p>
-        <select value={timeZone} onChange={e => setTimeZone(e.target.value)}>
-          <option value="-12">UTC-12</option>
-          <option value="-11">UTC-11</option>
-          <option value="-10">UTC-10</option>
-          <option value="-9">UTC-9</option>
-          <option value="-8">UTC-8</option>
-          <option value="-7">UTC-7</option>
-          <option value="-6">UTC-6</option>
-          <option value="-5">UTC-5</option>
-          <option value="-4">UTC-4</option>
-          <option value="-3">UTC-3</option>
-          <option value="-2">UTC-2</option>
-          <option value="-1">UTC-1</option> 
-          <option value="0">UTC</option>
-          <option value="1">UTC+1</option>          
-          <option value="2">UTC+2</option>
-          <option value="3">UTC+3</option>
-          <option value="4">UTC+4</option>
-          <option value="5">UTC+5</option>
-          <option value="6">UTC+6</option>
-          <option value="7">UTC+7</option>
-          <option value="8">UTC+8</option>
-          <option value="9">UTC+9</option>
-          <option value="10">UTC+10</option>
-          <option value="11">UTC+11</option>
-          <option value="12">UTC+12</option>
-          <option value="13">UTC+13</option>
-          <option value="14">UTC+14</option>
+        <label>TIMEZONE:</label>
+        <select value={timeZone} onChange={(e) => setTimeZone(e.target.value)}>
+          {Array.from({ length: 27 }, (_, i) => i - 12).map((tz) => (
+            <option key={tz} value={tz}>
+              {tz >= 0 ? `UTC+${tz}` : `UTC${tz}`}
+            </option>
+          ))}
         </select>
+        <a
+          href="https://en.wikipedia.org/wiki/List_of_UTC_offsets"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Learn more about UTC offsets
+        </a>
 
-        <p>To learn more about UTC schedule go to: </p>
-        <a href="https://en.wikipedia.org/wiki/List_of_UTC_offsets">List of UTC & countries</a>
-
-        <p>BODY: </p>
+        <label>BODY:</label>
         <input
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          placeholder="insert the body"
+          placeholder="Insert the body content"
           required
         />
 
-        <br />
         <button type="submit">Create CRON</button>
       </form>
     </div>
