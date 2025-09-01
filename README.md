@@ -1,6 +1,5 @@
 # Desafio-CRONS
-Desafio FullStack CRONS para Glartek
-
+Desafio FullStack CRONS
 ========
 to run (backend):
     node app
