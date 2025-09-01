@@ -17,14 +17,12 @@ function DeleteCron () {
 
 			// redireciona
       if (response.ok) {
-        alert(result.message);
-        navigate("/"); 
+        navigate("/list"); 
       } else {
         alert(`Erro: ${result.message}`);
       }
     } catch (err) {
-      console.error("Erro ao apagar cron:", err);
-      alert("Ocorreu um erro ao comunicar com o servidor.");
+      console.error("There was an error deleting this cron:", err);
     }
   }
 
