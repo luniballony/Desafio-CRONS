@@ -23,15 +23,69 @@ nav a {
 }
 
 nav a:hover {
-  color: #97a3a7; /* azul claro */
+  color: #00d1b2; /* azul claro */
   transform: translateY(-2px);
 }
 
 nav a.active {
-  border-bottom: 2px solid #64a6db;
+  border-bottom: 2px solid #00d1b2;
   padding-bottom: 2px;
 }
 
+
+
+/*==============*/
+/*  HOME PAGE   */
+/*==============*/
+
+
+
+.home-container {
+  text-align: center;
+  padding: 3rem;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.home-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #1e1e2f;
+}
+
+.home-container p {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.home-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 300px;
+  margin: 0 auto 2rem auto;
+}
+
+.home-links a {
+  background-color: #1e1e2f;
+  color: #f5f5f5;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.home-links a:hover {
+  background-color: #00d1b2;
+  transform: translateY(-3px);
+}
+
+.home-footer {
+  margin-top: 2rem;
+  font-style: italic;
+  color: #666;
+}
 
 
 }
