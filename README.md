@@ -66,11 +66,12 @@ npm install express
 - Listar CRON's já existentes
 - Editar CRON's já existentes
 - Eliminar CRON's
-- Se desejar ativar um CRON, selecione Listar -> CRON que deseja ativar e depois abra o ficheiro 'cron_log.txt' onde verá as notificações em tempo real
-- No ficheiro deverá aparecer uma mensagem com o formato:
-DATA(DD/MM/AAA), HORA(HH:MM:SS) -  (DATA(DD/MM/AAA), HORA(HH:MM:SS) Time Zone: UTC [timeZone]) - BODY
-sendo que o primeiro conjunto de data + hora é para está definido para (UTC+1) e o segundo para o time Zone definido
-ex.: 01/09/2025, 14:35:36 - (01/09/2025, 07:35:36 Time Zone: UTC -6) - TESTING 123456789
+- Se desejar ativar um CRON, selecione: Listar -> CRON que deseja ativar e depois abra o ficheiro 'cron_log.txt' onde verá as notificações em tempo real
+
+**No ficheiro deverá aparecer uma mensagem com o formato:**
+*DATA(DD/MM/AAA), HORA(HH:MM:SS) -  (DATA(DD/MM/AAA), HORA(HH:MM:SS) Time Zone: UTC [timeZone]) - BODY*
+- sendo que o primeiro conjunto de data + hora é para está definido para (UTC+1) e o segundo para o time Zone definido
+- ex.: 01/09/2025, 14:35:36 - (01/09/2025, 07:35:36 Time Zone: UTC -6) - TESTING 123456789
 
 
 **Observações Importantes**
