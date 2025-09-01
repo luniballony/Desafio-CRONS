@@ -1,6 +1,7 @@
 // ficheiro para eliminar cron
 import ViewCron from "./ViewCron"
 import { useParams, useNavigate  } from "react-router-dom"
+import '../index.css'
 
 function DeleteCron () {
 	const { uriId } = useParams();
@@ -28,10 +29,15 @@ function DeleteCron () {
   }
 
 	return (
-    <div>
-			<p>Are you sure you want to delete this cron?</p>
-			<ViewCron />
-      <button onClick={handleDelete}>Yes</button>
+    <div className="delete-container">
+      <h2>Delete CRON</h2>
+      <p>Are you sure you want to delete this cron?</p>
+
+      <ViewCron />
+
+      <button className="delete-button" onClick={handleDelete}>
+        Yes, delete it
+      </button>
     </div>
 	)
 }
