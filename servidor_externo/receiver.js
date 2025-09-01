@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 
 // Rota específica para receber notificações do cron
 app.all('/:uriId', (req, res) => {
-
     const { message } = req.body || {};
     const currentTime = new Date().toLocaleString("en-GB");
     

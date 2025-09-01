@@ -2,21 +2,21 @@
 ======== BACKEND ==========
 - função data (FEITO)
 - tratamento/detetação de erros
-    - adicionar verificação de metodo de http
-    - impedir que mesmo uri seja usado em Individualendpoint
+    - adicionar verificação de metodo de http (FEITO)
+    - impedir que mesmo uri seja usado em Individualendpoint (FEITO)
 - função listar (FEITO)
 - função criar
     - adicionar novas criações ao ficheiro data.json (FEITO)
 - função apagar (FEITO)
 - função editar (FEITO)
-- adicionar timezones!!!
+- adicionar timezones!!! (FEITO)
 
 
 ======== FRONTEND ==========
 - criar routes (FEITO)
 - criar navBar (FEITO)
 - página listar (FEITO)
-- página criar
-- página editar
-- página elimninar
-- criar css
+- página criar (FEITO)
+- página editar (FEITO)
+- página elimninar (FEITO)
+- criar css (FEITO)

@@ -59,7 +59,7 @@ function EditCron () {
         <input
           value={httpMethod}
           onChange={(e) => setHttpMethod(e.target.value)}
-          placeholder="insert the new http method"
+          placeholder="Insert the new http method"
           required
         />
 
@@ -67,7 +67,7 @@ function EditCron () {
         <input
           value={schedule}
           onChange={(e) => setSchedule(e.target.value)}
-          placeholder="insert the new schedule"
+          placeholder="Insert the schedule (e.g. */5 * * * *)"
           required
         />
 
@@ -84,7 +84,7 @@ function EditCron () {
         <input
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          placeholder="insert the new body"
+          placeholder="Insert the new body"
           required
         />
 

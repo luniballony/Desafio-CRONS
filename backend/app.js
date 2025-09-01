@@ -1,5 +1,4 @@
 // ficheiro principal do backend 
-
 import express from "express";
 import { ListCrons, DeleteCron, CreateCron, EditCron} from "./cronActions.js";
 import { cronActivator} from "./cronActions.js";
@@ -7,7 +6,6 @@ import { resetCrons} from './auxiliar.js'
 
 
 const app = express();
-
 app.use(express.json()); 
 
 // endpoint para ativar cron
@@ -61,8 +59,6 @@ app.put(`/editing/:uriId`, (req, res) => {
     res.status(400).json(result);
   }
 })
-
-
 
 
 // função para iniciar o server

@@ -20,7 +20,8 @@ export function cronActivator(uri) {
 
   // cria cron job e guarda referência
   const job = cron.schedule(cronData.schedule, async () => {
-    const message = `(Time Zone: UTC ${cronData.timeZone}) - ${cronData.body}`;
+    const time = new Date().toLocaleString("en-GB", { timeZone: timeZone });
+    const message = `(${time} Time Zone: UTC ${cronData.timeZone}) - ${cronData.body}`;
     const targetUrl = `${EXTERNAL_SERVER_URL}/${uri}`;
 
     try {
@@ -33,8 +34,10 @@ export function cronActivator(uri) {
           httpMethod: cronData.httpMethod
         }
       });
+      // DESATIVAR SE FOR DEMASIADO NA CONSOLA
       console.log(`[SUCESS] Notification sent to: ${targetUrl}`);
     } catch (error) {
+      // DESATIVAR SE FOR DEMASIADO NA CONSOLA
       console.error(`[ERROR] error sending data to: ${error.message}`);
     }
   }, { 

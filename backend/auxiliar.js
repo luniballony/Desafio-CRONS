@@ -10,20 +10,6 @@ export function resetCrons() {
 
 }
 
-/*
-// função para mostrar a hora atual
-export function Time() {
-  const now = new Date();
-  return `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
-}
-
-// função para mostrar dia atual
-export function Day() {
-  const now = new Date();
-  return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-}
-  */
-
 
 // função para calcular a timezone
 export function offsetToTimezone(offset) {
