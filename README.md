@@ -24,7 +24,7 @@ A API fornece as seguintes operações para o gerenciamento de CRONs:
 - react-router-dom: Para o roteamento de páginas no React.
 
 
-**Como Executar o Projeto**
+**Como Executar o Projeto**<br>
 **AVISO** 
 - Este projeto só foi testado em Windows + Chrome
 - As seguintes indicações são para ser corridas no mesmo sistema
@@ -59,7 +59,7 @@ npm install express
 - Todos podem ser iniciados com: npm start
 
 
-**Como usar**
+## Como usar
 - Após iniciar todos os servidores, navegue pelo servidor frontend
 - No mesmo poderá selecionar: 
 - Criar novo CRON
@@ -74,14 +74,14 @@ npm install express
 - ex.: 01/09/2025, 14:35:36 - (01/09/2025, 07:35:36 Time Zone: UTC -6) - TESTING 123456789
 
 
-**Observações Importantes**
+## Observações Importantes
 - O uri de cada CRON é tratado como um identificador único.
 - A execução dos CRONs é ativada somente quando o endpoint do serviço é visitado.
 - O body da requisição é assumido como uma string.
 - Os dados de todos os uri são enviados para o ficheiro: cron_log.txt
 
 
-**Futuro Trabalho** 
+## Futuro Trabalho
 - Implementação de testes
 - Melhorar lógica de time zones
 - Melhorar lógica de re-ativação de CRONs
