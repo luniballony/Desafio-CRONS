@@ -25,6 +25,11 @@ Frontend
 
 
 ** Como Executar o Projeto **
+    ** AVISO ** 
+    - Este projeto só foi testado em Windows + Chrome
+    - As seguintes indicações são para ser corridas no mesmo sistema
+    - Ajuste a instalação de dependências conforme o seu sistema operativo
+
     Pré-requisitos
         - Certifique-se de ter o Node.js e o npm instalados em sua máquina.
 
@@ -80,3 +85,4 @@ Frontend
     - Melhorar lógica de time zones
     - Melhorar lógica de re-ativação de CRONs
     - Criar mais componentes reutilizaveis para simplificar estrutura de frontEnd
+    - Testar em outros ambientes e máquinas
