@@ -1,19 +1,11 @@
 [
   {
-    "uri": "a",
-    "httpMethod": "get",
-    "schedule": "*/1 * * * * *",
-    "body": "O serviço que ir receber o pedido vindo do serviço de CRON dever mostrar ao utilizador a mensagem contida no parâmetro para a consola ou para um ficheiro com a adição da respetiva data atual. O resultado esperado deverá de ser algo como: 2021-12-01 09:00:00 - VALOR_DO_BOD",
-    "timeZone": "3",
-    "active": true
-  },
-  {
     "uri": "cron1",
     "httpMethod": "get",
     "schedule": " */2 * * * * *",
     "body": "just trying something new",
     "timeZone": "1",
-    "active": false
+    "active": true
   },
   {
     "uri": "1",

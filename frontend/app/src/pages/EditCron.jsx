@@ -3,6 +3,7 @@ import ViewCron from "./ViewCron"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import '../index.css'
 
 
 function EditCron () {
@@ -49,13 +50,15 @@ function EditCron () {
 
 
 	return (
-    <div>
+    <div className="create-container">
       <h2>Editing the following CRON</h2>
 			<ViewCron />
-      <form onSubmit={handleSubmit}>
-				<p>It's not possible to edit uri of a cron.</p>
-				<p>If you wish to edit a cron's uri, please create a new cron.</p>
-        <p>HTTP METHOD: </p>
+      <form className="create-form" onSubmit={handleSubmit}>
+				<p className="info-text">It's not possible to edit uri of a cron. 
+          <br/>If you wish to edit a cron's uri, please create a new cron.
+        </p>
+
+        <label>HTTP METHOD:</label>
         <input
           value={httpMethod}
           onChange={(e) => setHttpMethod(e.target.value)}
@@ -63,7 +66,7 @@ function EditCron () {
           required
         />
 
-        <p>SCHEDULE: </p>
+        <label>SCHEDULE:</label>
         <input
           value={schedule}
           onChange={(e) => setSchedule(e.target.value)}
@@ -71,38 +74,16 @@ function EditCron () {
           required
         />
 
-				<p>TIMEZONE:</p>
-        <select value={timeZone} onChange={e => setTimeZone(e.target.value)}>
-          <option value="-12">UTC-12</option>
-          <option value="-11">UTC-11</option>
-          <option value="-10">UTC-10</option>
-          <option value="-9">UTC-9</option>
-          <option value="-8">UTC-8</option>
-          <option value="-7">UTC-7</option>
-          <option value="-6">UTC-6</option>
-          <option value="-5">UTC-5</option>
-          <option value="-4">UTC-4</option>
-          <option value="-3">UTC-3</option>
-          <option value="-2">UTC-2</option>
-          <option value="-1">UTC-1</option> 
-          <option value="0">UTC</option>
-          <option value="1">UTC+1</option>          
-          <option value="2">UTC+2</option>
-          <option value="3">UTC+3</option>
-          <option value="4">UTC+4</option>
-          <option value="5">UTC+5</option>
-          <option value="6">UTC+6</option>
-          <option value="7">UTC+7</option>
-          <option value="8">UTC+8</option>
-          <option value="9">UTC+9</option>
-          <option value="10">UTC+10</option>
-          <option value="11">UTC+11</option>
-          <option value="12">UTC+12</option>
-          <option value="13">UTC+13</option>
-          <option value="14">UTC+14</option>
+        <label>TIMEZONE:</label>
+        <select value={timeZone} onChange={(e) => setTimeZone(e.target.value)}>
+          {Array.from({ length: 27 }, (_, i) => i - 12).map((tz) => (
+            <option key={tz} value={tz}>
+              {tz >= 0 ? `UTC+${tz}` : `UTC${tz}`}
+            </option>
+          ))}
         </select>
 
-        <p>BODY: </p>
+        <label>BODY:</label>
         <input
           value={body}
           onChange={(e) => setBody(e.target.value)}

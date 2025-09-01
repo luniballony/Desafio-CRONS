@@ -140,27 +140,27 @@ nav a.active {
 }
 
 .cron-actions a:nth-child(1) {
-  background-color: #0077cc;
+  background-color: black;
   color: white;
 }
 .cron-actions a:nth-child(1):hover {
-  background-color: #005fa3;
+  background-color: #28cf44;
 }
 
 .cron-actions a:nth-child(2) {
-  background-color: #00d1b2;
+  background-color: black;
   color: white;
 }
 .cron-actions a:nth-child(2):hover {
-  background-color: #00a189;
+  background-color: #09d6b7;
 }
 
 .cron-actions a:nth-child(3) {
-  background-color: #e63946;
+  background-color: black;
   color: white;
 }
 .cron-actions a:nth-child(3):hover {
-  background-color: #b91c1c;
+  background-color: #dd2121;
 }
 
 
@@ -246,6 +246,15 @@ nav a.active {
 /*==============*/
 /*  EDIT PAGE   */
 /*==============*/
+
+.info-text {
+  color: black;
+  border-radius: 6px;
+  margin: 10px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
 
 /*==============*/
 /*  DELETE PAGE */

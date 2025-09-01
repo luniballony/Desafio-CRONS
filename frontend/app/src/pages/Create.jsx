@@ -68,6 +68,13 @@ function Create() {
           placeholder="Insert the schedule (e.g. */5 * * * *)"
           required
         />
+        <a
+          href="https://crontab.guru/examples.html"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Learn more about CRON schedules here
+        </a>
 
         <label>TIMEZONE:</label>
         <select value={timeZone} onChange={(e) => setTimeZone(e.target.value)}>
@@ -82,7 +89,7 @@ function Create() {
           target="_blank"
           rel="noreferrer"
         >
-          Learn more about UTC offsets
+          Learn more about UTC offsets here
         </a>
 
         <label>BODY:</label>

@@ -5,7 +5,7 @@ import {useCronData} from '../hooks/FetchData'
 const List = () => {
   const { cron, loading } = useCronData();
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p className="info-text">Loading...</p>;
 
   return (
     <div className="list-container">
