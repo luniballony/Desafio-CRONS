@@ -6,16 +6,17 @@ const PORT = 3001;
 
 app.use(express.json());
 
-/*
 app.get('/', (req, res) => {
-    res.send('Please look at the cron_log.txt file for cron job notifications.');
+    res.send(`
+        <h2>External Cron Service is running!</h2>
+        <p>Please check the <strong>cron_log.txt</strong> file for notifications from your cron jobs.</p>
+    `);
 });
-*/
 
 // Rota específica para receber notificações do cron
 app.all('/:uriId', (req, res) => {
 
-    const { message } = req.body;
+    const { message } = req.body || {};
     const currentTime = new Date().toLocaleString("en-GB");
     
     if (message) {
